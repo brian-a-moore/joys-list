@@ -4,22 +4,23 @@ import styled from 'styled-components';
 
 import { deleteTemplate, getTemplates } from '../../../api';
 import { BUTTON_TYPES } from '../../../data/constants';
+import { ITemplate } from '../../../interfaces/template';
 import { Card, EmptyText } from '../../display';
 import { IconButton, Link } from '../../interactive';
 
 function Templates() {
-    const [templates, setTemplates] = useState(null);
+    const [templates, setTemplates] = useState<ITemplate[] | null>(null);
 
     useEffect(() => {
         setTemplates(getTemplates());
     }, []);
 
-    const _onDelete = id => {
+    const _onDelete = (id: string) => {
         deleteTemplate(id);
         setTemplates(getTemplates());
     };
 
-    const renderTemplates = () => {
+    const renderTemplates = (): JSX.Element[] | JSX.Element | Element => {
         if (templates === null) {
             return <p>Loading....</p>;
         }

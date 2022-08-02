@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BUTTON_TYPES } from '../../../data/constants';
 import { IPropsButton } from '../../../interfaces/interactions';
 
-function Button({ children, ...rest }: { children: string }) {
+function Button({ children, ...rest }: { children: string | string[] }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 

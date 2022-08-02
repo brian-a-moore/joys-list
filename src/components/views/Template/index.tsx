@@ -8,8 +8,8 @@ import {
     deleteTemplate,
     updateTemplate
 } from '../../../api';
-import { Input } from '../../../components/form';
-import { Button, IconButton } from '../../../components/interactive';
+import { Input } from '../../form';
+import { Button, IconButton } from '../../interactive';
 import {
     BUTTON_TYPES,
     DEFAULT_FIELD,
@@ -17,18 +17,23 @@ import {
     DEFAULT_TEMPLATE
 } from '../../../data/constants';
 import { getId } from '../../../helpers';
+import { ITemplate } from '../../../interfaces/template';
 import Field from './Field';
+
+type InputValue = string | number | boolean;
 
 function Template() {
     const { id } = useParams();
     const navigate = useNavigate();
     const isNewTemplate = id && id === 'new';
 
-    const [template, setTemplate] = useState(null);
+    const [template, setTemplate] = useState<ITemplate | null>(null);
 
     useEffect(() => {
         setTemplate(
-            !isNewTemplate ? getTemplate(id) : DEFAULT_TEMPLATE(getId())
+            !isNewTemplate
+                ? getTemplate(id as string)
+                : DEFAULT_TEMPLATE(getId())
         );
     }, [isNewTemplate, id]);
 
@@ -41,7 +46,7 @@ function Template() {
         }));
     };
 
-    const _deleteField = id => {
+    const _deleteField = (id: string) => {
         setTemplate(prevState => ({
             ...prevState,
             fields: [...prevState.fields].filter(f => f.id !== id)
@@ -59,14 +64,14 @@ function Template() {
         navigate(-1);
     };
 
-    const _onChange = (name, value) => {
+    const _onChange = (name: string, value: InputValue) => {
         setTemplate(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const _onFieldChange = (id, name, value) => {
+    const _onFieldChange = (id: string, name: string, value: InputValue) => {
         setTemplate(prevState => {
             const fields = [...prevState.fields];
             fields.find(f => f.id === id)[name] = value;

@@ -1,11 +1,28 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { CheckBox, Input, Select } from '../../../../components/form';
-import { IconButton } from '../../../../components/interactive';
+import { CheckBox, Input, Select } from '../../../form';
+import { IconButton } from '../../../interactive';
 import { BUTTON_TYPES, FIELDS } from '../../../../data/constants';
+import {
+    IField,
+    IFieldConstant,
+    EFieldType,
+    IFieldConstantOpts,
+    IFieldOpts
+} from '../../../../interfaces/field';
 
-function Field({ field, onFieldChange, deleteField }) {
+type InputValue = string | number | boolean;
+
+function Field({
+    field,
+    onFieldChange,
+    deleteField
+}: {
+    field: IField;
+    onFieldChange: Function;
+    deleteField: Function;
+}) {
     const [showOptions, setShowOptions] = useState(false);
 
     const _toggleOptions = e => {
@@ -13,19 +30,18 @@ function Field({ field, onFieldChange, deleteField }) {
         setShowOptions(prevState => !prevState);
     };
 
-    const _getOptions = fieldType => {
-        return FIELDS.find(field => field.value === fieldType).opts;
+    const _getOptions = (fieldType: EFieldType) => {
+        return FIELDS.find((field: IFieldConstant) => field.value === fieldType)
+            .opts;
     };
 
-    const _renderInputType = (opts, fieldOpts, index) => {
+    const _renderInputType = (
+        opts: IFieldConstantOpts,
+        fieldOpts: IFieldOpts,
+        index: number
+    ) => {
         if (opts.type === 'checkbox')
-            return (
-                <CheckBox
-                    key={index}
-                    type={opts.type}
-                    value={fieldOpts.value || opts.value}
-                />
-            );
+            return <CheckBox key={index} type={opts.type} />;
         if (opts.type === 'select') return <Select key={index} {...opts} />;
         return <Input key={index} {...opts} />;
     };
@@ -39,14 +55,14 @@ function Field({ field, onFieldChange, deleteField }) {
                         name="fieldName"
                         placeholder="Field Name"
                         value={field.fieldName}
-                        onChange={(name, value) =>
+                        onChange={(name: string, value: InputValue) =>
                             onFieldChange(field.id, name, value)
                         }
                     />
                     <Select
                         name="fieldType"
                         value={field.fieldType}
-                        onChange={(name, value) =>
+                        onChange={(name: string, value: InputValue) =>
                             onFieldChange(field.id, name, value)
                         }
                         options={FIELDS}
