@@ -1,11 +1,11 @@
 import { getId } from '../helpers';
-import { IField } from '../interfaces/field';
-import { ITemplate } from '../interfaces/template';
+import { EFieldType, IField } from '../interfaces/field';
+import { ITemplateBase } from '../interfaces/template';
 
 export const DEFAULT_FIELD = (id: string): IField => ({
     id,
     fieldName: '',
-    fieldType: 'text',
+    fieldType: EFieldType.text,
     opts: {
         defaultValue: ''
     }
@@ -39,7 +39,7 @@ export const DEFAULT_SETTINGS = {
     updatedAt: null
 };
 
-export const DEFAULT_TEMPLATE = (id: string): ITemplate => ({
+export const DEFAULT_TEMPLATE = (id: string): ITemplateBase => ({
     id: getId(),
     title: '',
     fields: [DEFAULT_FIELD(id)]
