@@ -1,9 +1,9 @@
-import { Field } from './field';
+import { IField } from './field';
 
-export interface Template {
+export interface ITemplate {
     id: string;
     title: string;
-    fields?: Field[];
+    fields?: IField[];
     createdAt?: Date;
     updatedAt?: Date;
 }

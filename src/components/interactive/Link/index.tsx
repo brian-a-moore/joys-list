@@ -2,15 +2,16 @@ import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { BUTTON_TYPES } from '../../../data/constants';
+import { IPropsLink } from '../../../interfaces/interactions';
 
-function Link({ children, ...rest }) {
+function Link({ children, ...rest }: { children: string }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 
 export default Link;
 
 const Wrapper = styled(RouterLink)`
-    ${props => setColors(props)};
+    ${(props: IPropsLink) => setColors(props)};
     float: left;
     height: 2rem;
     line-height: 2rem;
@@ -33,7 +34,7 @@ const Wrapper = styled(RouterLink)`
     }
 `;
 
-const setColors = ({ type, disabled }) => {
+const setColors = ({ type, disabled }: IPropsLink): string => {
     if (disabled) {
         return `
             background: var(--gray-200);

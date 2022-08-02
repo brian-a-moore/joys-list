@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getSettings, updateSettings } from '../../../api';
-import { CheckBox, Input } from '../../../components/form';
-import { Button } from '../../../components/interactive';
+import { ISettings } from '../../../interfaces/settings';
+import { CheckBox, Input } from '../../form';
+import { Button } from '../../interactive';
 
 function Settings() {
     const navigate = useNavigate();
-    const [settings, setSettings] = useState(null);
+    const [settings, setSettings] = useState<ISettings | null>(null);
 
     useEffect(() => {
         setSettings(getSettings());

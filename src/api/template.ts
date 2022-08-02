@@ -1,18 +1,18 @@
 import { DEFAULT_TEMPLATES, STORAGE_KEYS } from '../data/constants';
-import { Template } from '../interfaces/template';
+import { ITemplate } from '../interfaces/template';
 
-export const getTemplates = (): Template[] => {
+export const getTemplates = (): ITemplate[] => {
     const templates: string =
         localStorage.getItem(STORAGE_KEYS.TEMPLATES) || '';
 
     return JSON.parse(templates) || DEFAULT_TEMPLATES;
 };
 
-export const setTemplates = (templates: Template[]): void => {
+export const setTemplates = (templates: ITemplate[]): void => {
     localStorage.setItem(STORAGE_KEYS.TEMPLATES, JSON.stringify(templates));
 };
 
-export const createTemplate = (template: Template): void => {
+export const createTemplate = (template: ITemplate): void => {
     const templates = getTemplates();
     templates.push({
         ...template,
@@ -22,11 +22,11 @@ export const createTemplate = (template: Template): void => {
     setTemplates(templates);
 };
 
-export const getTemplate = (id: string): Template | null => {
-    return getTemplates().find((t: Template) => t.id === id) || null;
+export const getTemplate = (id: string): ITemplate | null => {
+    return getTemplates().find((t: ITemplate) => t.id === id) || null;
 };
 
-export const updateTemplate = (template: Template): void => {
+export const updateTemplate = (template: ITemplate): void => {
     setTemplates(
         getTemplates().map(t => {
             if (t.id === template.id) {
@@ -39,5 +39,5 @@ export const updateTemplate = (template: Template): void => {
 };
 
 export const deleteTemplate = (id: string): void => {
-    return setTemplates(getTemplates().filter((t: Template) => t.id !== id));
+    return setTemplates(getTemplates().filter((t: ITemplate) => t.id !== id));
 };

@@ -8,6 +8,7 @@ import {
 } from '@mdi/js';
 
 import { BUTTON_TYPES } from '../../../data/constants';
+import { IPropsIcon } from '../../../interfaces/interactions';
 
 const ICONS = {
     close: mdiCloseCircle,
@@ -16,7 +17,7 @@ const ICONS = {
     minimize: mdiChevronUp
 };
 
-function IconButton({ path, size, ...rest }) {
+function IconButton({ path, size, ...rest }: IPropsIcon) {
     return (
         <Wrapper {...rest}>
             <Icon path={ICONS[path]} size={size || '1rem'} />
@@ -27,7 +28,7 @@ function IconButton({ path, size, ...rest }) {
 export default IconButton;
 
 const Wrapper = styled.button`
-    ${props => setColors(props)};
+    ${(props: IPropsIcon) => setColors(props)};
     float: left;
     width: 2rem;
     height: 2rem;
@@ -51,7 +52,7 @@ const Wrapper = styled.button`
     }
 `;
 
-const setColors = ({ type, disabled }) => {
+const setColors = ({ type, disabled }: IPropsIcon): string => {
     if (disabled) {
         return `
             background: var(--gray-200);

@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 import { BUTTON_TYPES } from '../../../data/constants';
+import { IPropsButton } from '../../../interfaces/interactions';
 
-function Button({ children, ...rest }) {
+function Button({ children, ...rest }: { children: string }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 
 export default Button;
 
 const Wrapper = styled.button`
-    ${props => setColors(props)};
+    ${(props: IPropsButton) => setColors(props)};
     height: 2rem;
     line-height: 2rem;
     margin: 0;
@@ -30,7 +31,7 @@ const Wrapper = styled.button`
     }
 `;
 
-const setColors = ({ type, disabled }) => {
+const setColors = ({ type, disabled }: IPropsButton): string => {
     if (disabled) {
         return `
             background: var(--gray-200);

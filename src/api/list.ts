@@ -1,16 +1,16 @@
 import { DEFAULT_LISTS, STORAGE_KEYS } from '../data/constants';
-import { List } from '../interfaces/list';
+import { IListBase, IList } from '../interfaces/list';
 
-export const getLists = (): List[] => {
+export const getLists = (): IList[] => {
     const lists: string = localStorage.getItem(STORAGE_KEYS.LISTS) || '';
     return JSON.parse(lists) || DEFAULT_LISTS;
 };
 
-export const setLists = (lists: List[]): void => {
+export const setLists = (lists: IList[]): void => {
     localStorage.setItem(STORAGE_KEYS.LISTS, JSON.stringify(lists));
 };
 
-export const createList = (list: List): void => {
+export const createList = (list: IListBase): void => {
     const lists = getLists();
 
     lists.push({
@@ -22,11 +22,11 @@ export const createList = (list: List): void => {
     setLists(lists);
 };
 
-export const getList = (id: string): List | null => {
-    return getLists().find((l: List) => l.id === id) || null;
+export const getList = (id: string): IListBase | null => {
+    return getLists().find((l: IListBase) => l.id === id) || null;
 };
 
-export const updateList = (list: List): void => {
+export const updateList = (list: IList): void => {
     setLists(
         getLists().map(l => {
             if (l.id === list.id) {
@@ -39,5 +39,5 @@ export const updateList = (list: List): void => {
 };
 
 export const deleteList = (id: string): void => {
-    setLists(getLists().filter((l: List) => l.id !== id));
+    setLists(getLists().filter((l: IListBase) => l.id !== id));
 };

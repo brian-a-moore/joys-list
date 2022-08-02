@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { getSettings } from '../../../api';
 
 function Home() {
-    const [firstName, setFirstName] = useState(null);
+    const [firstName, setFirstName] = useState<string | null>(null);
 
     useEffect(() => {
         const settings = getSettings();

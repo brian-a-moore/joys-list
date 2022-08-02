@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Empty({ children }: { children: JSX.Element }) {
+function Empty({ children }: { children: string }) {
     return (
         <Wrapper>
             <p>{children}</p>

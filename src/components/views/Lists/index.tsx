@@ -6,20 +6,21 @@ import { deleteList, getLists } from '../../../api';
 import { BUTTON_TYPES } from '../../../data/constants';
 import { Card, EmptyText } from '../../display';
 import { IconButton, Link } from '../../interactive';
+import { IList } from '../../../interfaces/list';
 
 function Lists() {
-    const [lists, setLists] = useState(null);
+    const [lists, setLists] = useState<IList[] | null>(null);
 
     useEffect(() => {
         setLists(getLists());
     }, []);
 
-    const _onDelete = id => {
+    const _onDelete = (id: string) => {
         deleteList(id);
         setLists(getLists());
     };
 
-    const renderLists = () => {
+    const renderLists = (): JSX.Element[] | JSX.Element | Element => {
         if (lists === null) {
             return <p>Loading....</p>;
         }
@@ -28,13 +29,13 @@ function Lists() {
             return <EmptyText>No Lists</EmptyText>;
         }
 
-        return lists.map(t => (
-            <div key={t.id} className="list-row">
-                <ListLink to={`/list/${t.id}`}>
-                    <span className="title">{t.title}</span>
+        return lists.map(l => (
+            <div key={l.id} className="list-row">
+                <ListLink to={`/list/${l.id}`}>
+                    <span className="title">{l.title}</span>
                     <span className="updated-at">
                         <strong>Last Updated:</strong>{' '}
-                        {new Date(t.updatedAt).toDateString()}
+                        {new Date(l.updatedAt).toDateString()}
                     </span>
                 </ListLink>
                 <div>
