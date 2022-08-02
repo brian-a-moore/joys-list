@@ -93,7 +93,7 @@ function Template() {
             }
 
             navigate('/templates');
-        } catch (e) {
+        } catch (e: any | unknown) {
             alert(e.message);
         }
     };

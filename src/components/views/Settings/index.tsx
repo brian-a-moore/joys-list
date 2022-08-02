@@ -32,7 +32,7 @@ function Settings() {
         try {
             updateSettings(settings);
             navigate(-1);
-        } catch (e) {
+        } catch (e: any | unknown) {
             alert(e.message);
         }
     };
