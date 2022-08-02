@@ -1,10 +1,6 @@
 import { getId } from '../helpers';
 import { IField } from '../interfaces/field';
 import { ITemplate } from '../interfaces/template';
-export const BUTTON_TYPES = {
-    AFFIRMATIVE: 'AFFIRMATIVE',
-    DESTRUCTIVE: 'DESTRUCTIVE'
-};
 
 export const DEFAULT_FIELD = (id: string): IField => ({
     id,

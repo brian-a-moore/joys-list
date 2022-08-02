@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import { CheckBox, Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
-import { BUTTON_TYPES, FIELDS } from '../../../../data/constants';
+import { FIELDS } from '../../../../data/constants';
+import { InputValue } from '../../../../interfaces/input';
 import {
     IField,
     IFieldConstant,
@@ -11,8 +12,7 @@ import {
     IFieldConstantOpts,
     IFieldOpts
 } from '../../../../interfaces/field';
-
-type InputValue = string | number | boolean;
+import { EButtonTypes } from '../../../../interfaces/interactions';
 
 function Field({
     field,
@@ -25,7 +25,7 @@ function Field({
 }) {
     const [showOptions, setShowOptions] = useState(false);
 
-    const _toggleOptions = e => {
+    const _toggleOptions = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         setShowOptions(prevState => !prevState);
     };
@@ -74,7 +74,7 @@ function Field({
                         path={showOptions ? 'minimize' : 'maximize'}
                     />
                     <IconButton
-                        type={BUTTON_TYPES.DESTRUCTIVE}
+                        type={EButtonTypes.DESTRUCTIVE}
                         onClick={() => deleteField(field.id)}
                         path="close"
                     />

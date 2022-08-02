@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getSettings, updateSettings } from '../../../api';
+import { InputValue } from '../../../interfaces/input';
 import { ISettings } from '../../../interfaces/settings';
 import { CheckBox, Input } from '../../form';
 import { Button } from '../../interactive';
@@ -14,19 +15,19 @@ function Settings() {
         setSettings(getSettings());
     }, []);
 
-    const _onCancel = e => {
+    const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         navigate(-1);
     };
 
-    const _onChange = (name, value) => {
+    const _onChange = (name: string, value: InputValue) => {
         setSettings(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const _onSubmit = e => {
+    const _onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         try {
             updateSettings(settings);

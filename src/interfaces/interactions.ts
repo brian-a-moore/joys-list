@@ -1,5 +1,10 @@
+export enum EButtonTypes {
+    AFFIRMATIVE = 'AFFIRMATIVE',
+    DESTRUCTIVE = 'DESTRUCTIVE'
+}
+
 export interface IPropsButton {
-    type?: 'AFFIRMATIVE' | 'DESTRUCTIVE';
+    type?: EButtonTypes;
     disabled?: boolean;
 }
 

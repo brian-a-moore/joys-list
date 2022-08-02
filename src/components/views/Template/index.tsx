@@ -11,16 +11,15 @@ import {
 import { Input } from '../../form';
 import { Button, IconButton } from '../../interactive';
 import {
-    BUTTON_TYPES,
     DEFAULT_FIELD,
     DEFAULT_OPTS,
     DEFAULT_TEMPLATE
 } from '../../../data/constants';
 import { getId } from '../../../helpers';
+import { InputValue } from '../../../interfaces/input';
+import { EButtonTypes } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
 import Field from './Field';
-
-type InputValue = string | number | boolean;
 
 function Template() {
     const { id } = useParams();
@@ -53,13 +52,13 @@ function Template() {
         }));
     };
 
-    const _deleteTemplate = e => {
+    const _deleteTemplate = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         deleteTemplate(id || template.id);
         navigate(-1);
     };
 
-    const _onCancel = e => {
+    const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         navigate(-1);
     };
@@ -119,7 +118,7 @@ function Template() {
                     {!isNewTemplate && (
                         <div className="delete-template">
                             <IconButton
-                                type={BUTTON_TYPES.DESTRUCTIVE}
+                                type={EButtonTypes.DESTRUCTIVE}
                                 path="delete"
                                 onClick={_deleteTemplate}
                             />
@@ -141,7 +140,7 @@ function Template() {
                 <aside>
                     <Button onClick={_addField}>Add Field</Button>
                     <Button onClick={_onCancel}>Cancel</Button>
-                    <Button type={BUTTON_TYPES.AFFIRMATIVE}>
+                    <Button type={EButtonTypes.AFFIRMATIVE}>
                         {isNewTemplate ? 'Create ' : 'Update '} Template
                     </Button>
                 </aside>

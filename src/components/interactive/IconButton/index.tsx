@@ -7,8 +7,7 @@ import {
     mdiChevronDown
 } from '@mdi/js';
 
-import { BUTTON_TYPES } from '../../../data/constants';
-import { IPropsIcon } from '../../../interfaces/interactions';
+import { EButtonTypes, IPropsIcon } from '../../../interfaces/interactions';
 
 const ICONS = {
     close: mdiCloseCircle,
@@ -61,7 +60,7 @@ const setColors = ({ type, disabled }: IPropsIcon): string => {
         `;
     }
     switch (type) {
-        case BUTTON_TYPES.AFFIRMATIVE:
+        case EButtonTypes.AFFIRMATIVE:
             return `
             background: transparent;
             color: var(--gray-500);
@@ -71,7 +70,7 @@ const setColors = ({ type, disabled }: IPropsIcon): string => {
                 color: var(--white);
             }
         `;
-        case BUTTON_TYPES.DESTRUCTIVE:
+        case EButtonTypes.DESTRUCTIVE:
             return `
             background: transparent;
             color: var(--gray-500);

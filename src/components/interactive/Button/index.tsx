@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { BUTTON_TYPES } from '../../../data/constants';
-import { IPropsButton } from '../../../interfaces/interactions';
+import { EButtonTypes, IPropsButton } from '../../../interfaces/interactions';
 
 function Button({ children, ...rest }: { children: string | string[] }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
@@ -40,7 +39,7 @@ const setColors = ({ type, disabled }: IPropsButton): string => {
         `;
     }
     switch (type) {
-        case BUTTON_TYPES.AFFIRMATIVE:
+        case EButtonTypes.AFFIRMATIVE:
             return `
             background: var(--teal-500);
             color: var(--white);
@@ -49,7 +48,7 @@ const setColors = ({ type, disabled }: IPropsButton): string => {
                 background: var(--teal-600);
             }
         `;
-        case BUTTON_TYPES.DESTRUCTIVE:
+        case EButtonTypes.DESTRUCTIVE:
             return `
             background: var(--rose-600);
             color: var(--white);

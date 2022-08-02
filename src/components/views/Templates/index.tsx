@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { deleteTemplate, getTemplates } from '../../../api';
-import { BUTTON_TYPES } from '../../../data/constants';
+import { EButtonTypes } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
 import { Card, EmptyText } from '../../display';
 import { IconButton, Link } from '../../interactive';
@@ -40,7 +40,7 @@ function Templates() {
                 </TemplateLink>
                 <div>
                     <IconButton
-                        type={BUTTON_TYPES.DESTRUCTIVE}
+                        type={EButtonTypes.DESTRUCTIVE}
                         onClick={() => _onDelete(t.id)}
                         path="delete"
                     />
@@ -54,7 +54,7 @@ function Templates() {
             <h1>Templates</h1>
             <Card>{renderTemplates()}</Card>
             <div className="delete-button">
-                <Link type={BUTTON_TYPES.AFFIRMATIVE} to="/template/new">
+                <Link type={EButtonTypes.AFFIRMATIVE} to="/template/new">
                     New Template
                 </Link>
             </div>

@@ -3,9 +3,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { deleteList, getLists } from '../../../api';
-import { BUTTON_TYPES } from '../../../data/constants';
 import { Card, EmptyText } from '../../display';
 import { IconButton, Link } from '../../interactive';
+import { EButtonTypes } from '../../../interfaces/interactions';
 import { IList } from '../../../interfaces/list';
 
 function Lists() {
@@ -40,8 +40,8 @@ function Lists() {
                 </ListLink>
                 <div>
                     <IconButton
-                        type={BUTTON_TYPES.DESTRUCTIVE}
-                        onClick={() => _onDelete(t.id)}
+                        type={EButtonTypes.DESTRUCTIVE}
+                        onClick={() => _onDelete(l.id)}
                         path="delete"
                     />
                 </div>
@@ -54,7 +54,7 @@ function Lists() {
             <h1>Lists</h1>
             <Card>{renderLists()}</Card>
             <div className="delete-button">
-                <Link type={BUTTON_TYPES.AFFIRMATIVE} to="/list/new">
+                <Link type={EButtonTypes.AFFIRMATIVE} to="/list/new">
                     New List
                 </Link>
             </div>
