@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Card({ children, ...rest }) {
+function Card({ children, ...rest }: { children: JSX.Element }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 

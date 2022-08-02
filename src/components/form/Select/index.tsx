@@ -1,6 +1,21 @@
 import styled from 'styled-components';
 
-function SelectInput({ onChange, name, options, ...rest }) {
+type Option = {
+    id: string;
+    value: string;
+    title: string;
+};
+
+function SelectInput({
+    onChange,
+    name,
+    options,
+    ...rest
+}: {
+    onChange: Function;
+    name: string;
+    options: Option[];
+}) {
     return (
         <Wrapper>
             <select

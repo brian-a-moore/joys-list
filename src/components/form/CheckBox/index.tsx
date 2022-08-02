@@ -2,7 +2,17 @@ import styled from 'styled-components';
 import { mdiCheck } from '@mdi/js';
 import { Icon } from '@mdi/react';
 
-function CheckBox({ onChange, name, label, value }) {
+function CheckBox({
+    onChange,
+    name,
+    label,
+    value
+}: {
+    onChange: Function;
+    name: string;
+    label: string;
+    value: boolean;
+}) {
     return (
         <Wrapper>
             <div className="container">

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-function Input({ onChange, name, ...rest }) {
+function Input({
+    onChange,
+    name,
+    ...rest
+}: {
+    onChange: Function;
+    name: string;
+}) {
     return (
         <Wrapper>
             <input

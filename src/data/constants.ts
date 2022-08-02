@@ -1,9 +1,12 @@
+import { getId } from '../helpers';
+import { Field } from '../interfaces/field';
+import { Template } from '../interfaces/template';
 export const BUTTON_TYPES = {
     AFFIRMATIVE: 'AFFIRMATIVE',
     DESTRUCTIVE: 'DESTRUCTIVE'
 };
 
-export const DEFAULT_FIELD = id => ({
+export const DEFAULT_FIELD = (id: string): Field => ({
     id,
     fieldName: '',
     fieldType: 'text',
@@ -40,7 +43,8 @@ export const DEFAULT_SETTINGS = {
     updatedAt: null
 };
 
-export const DEFAULT_TEMPLATE = id => ({
+export const DEFAULT_TEMPLATE = (id: string): Template => ({
+    id: getId(),
     title: '',
     fields: [DEFAULT_FIELD(id)]
 });
