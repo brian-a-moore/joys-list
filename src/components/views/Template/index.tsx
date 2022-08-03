@@ -40,7 +40,7 @@ function Template() {
         }
     }, [isNewTemplate, id]);
 
-    const _addField = (e: React.FormEvent<HTMLInputElement></HTMLInputElement>) => {
+    const _addField = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
 
         setTemplate(prevState => ({
