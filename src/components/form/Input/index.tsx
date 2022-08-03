@@ -7,6 +7,7 @@ function Input({
 }: {
     onChange: Function;
     name: string;
+    [x: string]: any;
 }) {
     return (
         <Wrapper>

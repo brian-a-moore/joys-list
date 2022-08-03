@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -18,7 +18,7 @@ import {
 import { getId } from '../../../helpers';
 import { InputValue } from '../../../interfaces/input';
 import { EButtonTypes } from '../../../interfaces/interactions';
-import { ITemplate } from '../../../interfaces/template';
+import { ITemplateBase, ITemplate } from '../../../interfaces/template';
 import Field from './Field';
 
 function Template() {
@@ -26,17 +26,21 @@ function Template() {
     const navigate = useNavigate();
     const isNewTemplate = id && id === 'new';
 
-    const [template, setTemplate] = useState<ITemplate | null>(null);
+    const [template, setTemplate] = useState<ITemplateBase | ITemplate | null>(
+        null
+    );
 
     useEffect(() => {
-        setTemplate(
-            !isNewTemplate
-                ? getTemplate(id as string)
-                : DEFAULT_TEMPLATE(getId())
-        );
+        if (!isNewTemplate) {
+            setTemplate(getTemplate(id as string));
+        } else {
+            const id: string = getId();
+
+            setTemplate(DEFAULT_TEMPLATE(id));
+        }
     }, [isNewTemplate, id]);
 
-    const _addField = e => {
+    const _addField = (e: React.FormEvent<HTMLInputElement></HTMLInputElement>) => {
         e.preventDefault();
 
         setTemplate(prevState => ({
