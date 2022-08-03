@@ -30,7 +30,7 @@ function Settings() {
     const _onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         try {
-            updateSettings(settings);
+            updateSettings(settings as ISettings);
             navigate(-1);
         } catch (e: any | unknown) {
             alert(e.message);

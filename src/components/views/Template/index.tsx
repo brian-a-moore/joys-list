@@ -137,7 +137,6 @@ function Template() {
                             field={field}
                             onFieldChange={_onFieldChange}
                             deleteField={_deleteField}
-                            addField={_addField}
                         />
                     ))}
                 </section>
