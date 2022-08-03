@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 import { EButtonTypes, IPropsButton } from '../../../interfaces/interactions';
 
-function Button({ children, ...rest }: { children: string | string[] }) {
+function Button({
+    children,
+    ...rest
+}: {
+    children: string | string[];
+    [x: string]: any;
+}) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 

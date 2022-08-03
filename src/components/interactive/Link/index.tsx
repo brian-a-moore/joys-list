@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { EButtonTypes, IPropsLink } from '../../../interfaces/interactions';
 
-function Link({ children, ...rest }: { children: string }) {
+function Link({ children, ...rest }: { children: string; [x: string]: any }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
 }
 
