@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { EButtonType, IPropsButton } from '../../../interfaces/interactions';
+import { EButtonType, PButton } from '../../../interfaces/interactions';
 
 function Button({
     children,
@@ -15,7 +15,7 @@ function Button({
 export default Button;
 
 const Wrapper = styled.button`
-    ${(props: IPropsButton) => setColors(props)};
+    ${(props: PButton) => setColors(props)};
     height: 2rem;
     line-height: 2rem;
     margin: 0;
@@ -36,7 +36,7 @@ const Wrapper = styled.button`
     }
 `;
 
-const setColors = ({ type, disabled }: IPropsButton): string => {
+const setColors = ({ type, disabled }: PButton): string => {
     if (disabled) {
         return `
             background: var(--gray-200);

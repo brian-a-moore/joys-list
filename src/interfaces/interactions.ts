@@ -3,15 +3,15 @@ export enum EButtonType {
     DESTRUCTIVE = 'DESTRUCTIVE'
 }
 
-export interface IPropsButton {
+export interface PButton {
     type?: EButtonType;
     disabled?: boolean;
     [x: string]: any;
 }
 
-export interface IPropsLink extends IPropsButton {}
+export interface PLink extends PButton {}
 
-export interface IPropsIcon extends IPropsButton {
+export interface PIcon extends PButton {
     path: string;
     size?: string;
 }

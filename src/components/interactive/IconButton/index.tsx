@@ -7,7 +7,7 @@ import {
     mdiChevronDown
 } from '@mdi/js';
 
-import { EButtonType, IPropsIcon } from '../../../interfaces/interactions';
+import { EButtonType, PIcon } from '../../../interfaces/interactions';
 
 const getIcon = (path: string) => {
     switch (path) {
@@ -24,7 +24,7 @@ const getIcon = (path: string) => {
     }
 };
 
-function IconButton({ path, size, ...rest }: IPropsIcon) {
+function IconButton({ path, size, ...rest }: PIcon) {
     return (
         <Wrapper {...rest}>
             <Icon path={getIcon(path)} size={size || '1rem'} />
@@ -35,7 +35,7 @@ function IconButton({ path, size, ...rest }: IPropsIcon) {
 export default IconButton;
 
 const Wrapper = styled.button`
-    ${(props: IPropsIcon) => setColors(props)};
+    ${(props: PIcon) => setColors(props)};
     float: left;
     width: 2rem;
     height: 2rem;
@@ -59,7 +59,7 @@ const Wrapper = styled.button`
     }
 `;
 
-const setColors = ({ type, disabled }: IPropsIcon): string => {
+const setColors = ({ type, disabled }: PIcon): string => {
     if (disabled) {
         return `
             background: var(--gray-200);
