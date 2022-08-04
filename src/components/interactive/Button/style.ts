@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { EButtonType, PButton } from "../../../interfaces/interactions";
 
 export const Wrapper = styled.button`

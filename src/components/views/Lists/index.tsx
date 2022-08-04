@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { deleteList, getLists } from "../../../api";
 import { getDate } from "../../../helpers";
 import { EButtonType } from "../../../interfaces/interactions";
 import { IList } from "../../../interfaces/list";
 import { Card, EmptyText } from "../../display";
 import { IconButton, Link } from "../../interactive";
-import { Wrapper, ListLink } from "./style";
+import { ListLink, Wrapper } from "./style";
 
 function Lists() {
   const [lists, setLists] = useState<IList[] | null>(null);

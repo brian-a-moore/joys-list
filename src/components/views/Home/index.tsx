@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { getSettings } from "../../../api";
 import { Wrapper } from "./style";
 

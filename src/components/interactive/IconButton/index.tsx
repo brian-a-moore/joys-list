@@ -1,5 +1,4 @@
 import { Icon } from "@mdi/react";
-
 import { PIcon } from "../../../interfaces/interactions";
 import { getIcon } from "./helpers";
 import { Wrapper } from "./style";

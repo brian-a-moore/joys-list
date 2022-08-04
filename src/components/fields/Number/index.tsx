@@ -1,13 +1,11 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
-function NumberField() {
+const NumberField = () => {
   return (
     <Wrapper>
       <span>Number</span>
     </Wrapper>
   );
-}
+};
 
 export default NumberField;
-
-const Wrapper = styled.div``;

@@ -1,13 +1,11 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
-function TextField() {
+const TextField = () => {
   return (
     <Wrapper>
       <span>Text</span>
     </Wrapper>
   );
-}
+};
 
 export default TextField;
-
-const Wrapper = styled.div``;

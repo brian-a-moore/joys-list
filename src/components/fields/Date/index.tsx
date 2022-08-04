@@ -1,13 +1,11 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
-function DateField() {
+const DateField = () => {
   return (
     <Wrapper>
       <span>Date</span>
     </Wrapper>
   );
-}
+};
 
 export default DateField;
-
-const Wrapper = styled.div``;

@@ -1,6 +1,5 @@
-import styled from "styled-components";
-
 import { PInput } from "../../../interfaces/input";
+import { Wrapper } from "./style";
 
 const SelectInput: React.FC<PInput> = ({ onChange, name, options, value }) => {
   return (
@@ -22,13 +21,3 @@ const SelectInput: React.FC<PInput> = ({ onChange, name, options, value }) => {
 };
 
 export default SelectInput;
-
-const Wrapper = styled.div`
-  width: 100%;
-
-  select {
-    height: 2rem;
-    padding: 0 1rem;
-    border: 1px solid var(--gray-300);
-  }
-`;

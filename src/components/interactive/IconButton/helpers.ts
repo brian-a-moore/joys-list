@@ -1,8 +1,8 @@
 import {
-  mdiDelete,
-  mdiCloseCircle,
-  mdiChevronUp,
   mdiChevronDown,
+  mdiChevronUp,
+  mdiCloseCircle,
+  mdiDelete,
 } from "@mdi/js";
 
 export const getIcon = (path: string) => {

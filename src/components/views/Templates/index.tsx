@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { deleteTemplate, getTemplates } from "../../../api";
 import { getDate } from "../../../helpers";
 import { EButtonType } from "../../../interfaces/interactions";
 import { ITemplate } from "../../../interfaces/template";
 import { Card, EmptyText } from "../../display";
 import { IconButton, Link } from "../../interactive";
-import { Wrapper, TemplateLink } from "./style";
+import { TemplateLink, Wrapper } from "./style";
 
 function Templates() {
   const [templates, setTemplates] = useState<ITemplate[] | null>(null);

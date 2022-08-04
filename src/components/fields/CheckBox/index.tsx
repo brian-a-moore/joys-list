@@ -1,13 +1,11 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
-function CheckBoxField() {
+const CheckBoxField = () => {
   return (
     <Wrapper>
       <span>Check Box</span>
     </Wrapper>
   );
-}
+};
 
 export default CheckBoxField;
-
-const Wrapper = styled.div``;

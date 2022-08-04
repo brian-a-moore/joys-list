@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
 import {
-  getTemplate,
   createTemplate,
   deleteTemplate,
+  getTemplate,
   updateTemplate,
 } from "../../../api";
 import { DEFAULT_TEMPLATE } from "../../../data/constants";

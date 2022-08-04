@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { getSettings, updateSettings } from "../../../api";
 import { InputValue } from "../../../interfaces/input";
 import { ISettings } from "../../../interfaces/settings";
