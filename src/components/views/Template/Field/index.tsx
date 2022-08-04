@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CheckBox, Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
 import { FIELD_OPTS } from '../../../../data/constants';
-import { EInputType, InputValue } from '../../../../interfaces/input';
+import { EInputType } from '../../../../interfaces/input';
 import {
     IField,
     IFieldConstant,
