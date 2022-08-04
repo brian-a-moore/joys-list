@@ -1,17 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { CheckBox, Input, Select } from '../../../form';
+import { Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
 import { FIELDS } from '../../../../data/constants';
 import { InputValue } from '../../../../interfaces/input';
-import {
-    IField,
-    IFieldConstant,
-    EFieldType,
-    IFieldConstantOpts,
-    IFieldOpts
-} from '../../../../interfaces/field';
+import { IField } from '../../../../interfaces/field';
 import { EButtonTypes } from '../../../../interfaces/interactions';
 
 function Field({
@@ -28,32 +22,6 @@ function Field({
     const _toggleOptions = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         setShowOptions(prevState => !prevState);
-    };
-
-    const _getOptions = (fieldType: EFieldType) => {
-        return FIELDS.find((field: IFieldConstant) => field.value === fieldType)
-            .opts;
-    };
-
-    const _renderInputType = (
-        opts: IFieldConstantOpts,
-        fieldOpts: IFieldOpts,
-        index: number
-    ) => {
-        if (opts.type === 'checkbox')
-            return (
-                <CheckBox
-                    key={index}
-                    type={opts.type}
-                    label={''}
-                    name={''}
-                    onChange={() => {}}
-                    value={false}
-                />
-            );
-        if (opts.type === 'select')
-            return <Select onChange={() => {}} key={index} {...opts} />;
-        return <Input onChange={() => {}} key={index} {...opts} />;
     };
 
     return (
@@ -93,12 +61,6 @@ function Field({
             {showOptions && (
                 <div className="field-options">
                     <h6>Options:</h6>
-                    {field.fieldType &&
-                        _getOptions(field.fieldType).map((opts, index) => (
-                            <div className="opts-row">
-                                {_renderInputType(opts, field.opts, index)}
-                            </div>
-                        ))}
                 </div>
             )}
         </Wrapper>
