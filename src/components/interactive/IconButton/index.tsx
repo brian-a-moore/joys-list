@@ -9,17 +9,25 @@ import {
 
 import { EButtonTypes, IPropsIcon } from '../../../interfaces/interactions';
 
-const ICONS = {
-    close: mdiCloseCircle,
-    delete: mdiDelete,
-    maximize: mdiChevronDown,
-    minimize: mdiChevronUp
+const getIcon = (path: string) => {
+    switch (path) {
+        case 'close':
+            return mdiCloseCircle;
+        case 'delete':
+            return mdiDelete;
+        case 'maximize':
+            return mdiChevronDown;
+        case 'minimize':
+            return mdiChevronUp;
+        default:
+            return '';
+    }
 };
 
 function IconButton({ path, size, ...rest }: IPropsIcon) {
     return (
         <Wrapper {...rest}>
-            <Icon path={ICONS[path]} size={size || '1rem'} />
+            <Icon path={getIcon(path)} size={size || '1rem'} />
         </Wrapper>
     );
 }
