@@ -3,7 +3,7 @@ import { IListBase, IList } from '../interfaces/list';
 
 export const getLists = (): IList[] => {
     const lists: string = localStorage.getItem(STORAGE_KEYS.LISTS) || '';
-    return JSON.parse(lists) || DEFAULT_LISTS;
+    return lists ? JSON.parse(lists) : DEFAULT_LISTS;
 };
 
 export const setLists = (lists: IList[]): void => {

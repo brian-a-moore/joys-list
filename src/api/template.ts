@@ -5,7 +5,7 @@ export const getTemplates = (): ITemplate[] => {
     const templates: string =
         localStorage.getItem(STORAGE_KEYS.TEMPLATES) || '';
 
-    return JSON.parse(templates) || DEFAULT_TEMPLATES;
+    return templates ? JSON.parse(templates) : DEFAULT_TEMPLATES;
 };
 
 export const setTemplates = (templates: ITemplate[]): void => {

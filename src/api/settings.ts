@@ -3,7 +3,7 @@ import { ISettings } from '../interfaces/settings';
 
 export const getSettings = (): ISettings => {
     const settings: string = localStorage.getItem(STORAGE_KEYS.SETTINGS) || '';
-    return JSON.parse(settings) || DEFAULT_SETTINGS;
+    return settings ? JSON.parse(settings) : DEFAULT_SETTINGS;
 };
 export const updateSettings = (updates: ISettings) => {
     localStorage.setItem(
