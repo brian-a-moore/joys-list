@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 import { Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
-import { FIELDS } from '../../../../data/constants';
+import { FIELD_OPTS } from '../../../../data/constants';
 import { InputValue } from '../../../../interfaces/input';
-import { IField } from '../../../../interfaces/field';
+import { IField, IFieldOpts } from '../../../../interfaces/field';
 import { EButtonTypes } from '../../../../interfaces/interactions';
+// import { getDefaultOptions } from '../../../../helpers';
 
 function Field({
     field,
@@ -22,6 +23,10 @@ function Field({
     const _toggleOptions = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         setShowOptions(prevState => !prevState);
+    };
+
+    const _renderOptions = (key: string, opts: IFieldOpts) => {
+        // const defaultOpts = getDefaultOptions(key);
     };
 
     return (
@@ -43,7 +48,7 @@ function Field({
                         onChange={(name: string, value: InputValue) =>
                             onFieldChange(field.id, name, value)
                         }
-                        options={FIELDS}
+                        options={FIELD_OPTS}
                     />
                 </div>
                 <div className="actions">
@@ -61,6 +66,8 @@ function Field({
             {showOptions && (
                 <div className="field-options">
                     <h6>Options:</h6>
+                    <>{_renderOptions(field.fieldType, field.opts)}</>
+                    <p>{JSON.stringify(field.opts)}</p>
                 </div>
             )}
         </Wrapper>

@@ -1,14 +1,4 @@
 import { getId } from '../helpers';
-import { EFieldType, IField } from '../interfaces/field';
-
-export const DEFAULT_FIELD = (id: string): IField => ({
-    id,
-    fieldName: '',
-    fieldType: EFieldType.text,
-    opts: {
-        defaultValue: ''
-    }
-});
 
 export const DEFAULT_LISTS = [];
 
@@ -26,100 +16,26 @@ export const DEFAULT_TEMPLATE = {
 
 export const DEFAULT_TEMPLATES = [];
 
-export const FIELDS = [
+export const FIELD_OPTS = [
     {
         id: 'checkbox',
         value: 'checkbox',
-        title: 'Check Box',
-        opts: [
-            {
-                type: 'checkbox',
-                name: 'defaultValue',
-                label: 'Default Value',
-                value: false
-            }
-        ]
+        title: 'Check Box'
     },
     {
         id: 'date',
         value: 'date',
-        title: 'Date',
-        opts: [
-            {
-                type: 'number',
-                name: 'defaultValue',
-                placeholder: 'Default Value',
-                value: undefined
-            },
-            {
-                type: 'select',
-                name: 'dateFormat',
-                placeholder: 'Date Format',
-                options: [
-                    {
-                        id: 'MM/DD/YYYY',
-                        value: 'MM/DD/YYYY',
-                        title: 'MM/DD/YYYY'
-                    },
-                    {
-                        id: 'YYYY/MM/DD',
-                        value: 'YYYY/MM/DD',
-                        title: 'YYYY/MM/DD'
-                    }
-                ],
-                value: 'MM/DD/YYYY'
-            },
-            {
-                type: 'checkbox',
-                name: 'allowPastDates',
-                label: 'Allow Dates in Past',
-                value: true
-            }
-        ]
+        title: 'Date'
     },
     {
         id: 'number',
         value: 'number',
-        title: 'Number',
-        opts: [
-            {
-                type: 'number',
-                name: 'defaultValue',
-                placeholder: 'Default Value',
-                value: undefined
-            },
-            {
-                type: 'checkbox',
-                name: 'allowNegative',
-                label: 'Allow Negative',
-                value: true
-            },
-            {
-                type: 'checkbox',
-                name: 'isDollarFormatted',
-                label: 'Dollar Format',
-                value: true
-            },
-            {
-                type: 'checkbox',
-                name: 'showCents',
-                label: 'Show Cents',
-                value: true
-            }
-        ]
+        title: 'Number'
     },
     {
         id: 'text',
         value: 'text',
-        title: 'Text',
-        opts: [
-            {
-                type: 'text',
-                name: 'defaultValue',
-                placeholder: 'Default Value',
-                value: ''
-            }
-        ]
+        title: 'Text'
     }
 ];
 

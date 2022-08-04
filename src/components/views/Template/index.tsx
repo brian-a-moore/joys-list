@@ -10,8 +10,8 @@ import {
 } from '../../../api';
 import { Input } from '../../form';
 import { Button, IconButton } from '../../interactive';
-import { DEFAULT_FIELD, DEFAULT_TEMPLATE } from '../../../data/constants';
-import { getId } from '../../../helpers';
+import { DEFAULT_TEMPLATE } from '../../../data/constants';
+import { getDefaultField, getDefaultOptions, getId } from '../../../helpers';
 import { InputValue } from '../../../interfaces/input';
 import { EButtonTypes } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
@@ -39,7 +39,7 @@ function Template() {
 
         setTemplate(prevState => ({
             ...prevState,
-            fields: [...prevState.fields, DEFAULT_FIELD(getId())]
+            fields: [...prevState.fields, getDefaultField(getId())]
         }));
     };
 
@@ -74,10 +74,16 @@ function Template() {
             const index = fields.findIndex(f => f.id === id);
 
             if (index > -1) {
+                // Update the field value
                 fields[index] = {
                     ...fields[index],
                     [name]: value
                 };
+
+                // Set default field options if the value changed was the field type
+                if (name === 'fieldType') {
+                    fields[index].opts = getDefaultOptions(value);
+                }
             }
 
             return { ...prevState, fields };
