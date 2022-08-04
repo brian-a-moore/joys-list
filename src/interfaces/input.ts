@@ -5,7 +5,7 @@ export interface PInput {
     label?: string;
     placeholder?: string;
     type?: string;
-    onChange: <Type>(name: string, value: InputValue) => Type;
+    onChange: (name: string, value: InputValue) => void;
     options?: IOption[];
     value: InputValue;
 }

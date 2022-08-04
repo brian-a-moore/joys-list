@@ -27,7 +27,7 @@ function Settings() {
         }));
     };
 
-    const _onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+    const _onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         try {
             updateSettings(settings as ISettings);
