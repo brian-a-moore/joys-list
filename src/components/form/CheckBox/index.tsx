@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 import { mdiCheck } from '@mdi/js';
 import { Icon } from '@mdi/react';
+import { PInput } from '../../../interfaces/input';
 
-type Props = {
-    onChange: Function;
-    name: string;
-    label: string;
-    value: boolean;
-};
-
-const CheckBox: React.FC<Props> = ({ onChange, name, label, value }) => {
+const CheckBox: React.FC<PInput> = ({ onChange, name, label, value }) => {
     return (
         <Wrapper>
             <div className="container">

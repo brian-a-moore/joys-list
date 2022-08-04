@@ -1,17 +1,21 @@
 import styled from 'styled-components';
+import { PInput } from '../../../interfaces/input';
 
-type Props = {
-    onChange: Function;
-    name: string;
-};
-
-const Input: React.FC<Props> = ({ onChange, name, ...rest }) => {
+const Input: React.FC<PInput> = ({
+    onChange,
+    name,
+    placeholder,
+    type,
+    value
+}) => {
     return (
         <Wrapper>
             <input
-                {...rest}
+                type={type}
                 name={name}
                 onChange={e => onChange(name, e.target.value)}
+                placeholder={placeholder}
+                value={value}
             />
         </Wrapper>
     );

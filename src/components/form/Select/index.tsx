@@ -1,30 +1,16 @@
 import styled from 'styled-components';
+import { PInput } from '../../../interfaces/input';
 
-type Props = {
-    onChange: Function;
-    name: string;
-    options: Option[];
-};
-
-type Option = {
-    id: string;
-    value: string;
-    title: string;
-};
-
-const SelectInput: React.FC<Props> = ({ onChange, name, options, ...rest }) => {
+const SelectInput: React.FC<PInput> = ({ onChange, name, options }) => {
     return (
         <Wrapper>
-            <select
-                {...rest}
-                name={name}
-                onChange={e => onChange(name, e.target.value)}
-            >
-                {options.map(({ id, value, title }) => (
-                    <option key={id} value={value}>
-                        {title}
-                    </option>
-                ))}
+            <select name={name} onChange={e => onChange(name, e.target.value)}>
+                {options &&
+                    options.map(({ id, value, title }) => (
+                        <option key={id} value={value}>
+                            {title}
+                        </option>
+                    ))}
             </select>
         </Wrapper>
     );

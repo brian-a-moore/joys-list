@@ -41,9 +41,19 @@ function Field({
         index: number
     ) => {
         if (opts.type === 'checkbox')
-            return <CheckBox key={index} type={opts.type} />;
-        if (opts.type === 'select') return <Select key={index} {...opts} />;
-        return <Input key={index} {...opts} />;
+            return (
+                <CheckBox
+                    key={index}
+                    type={opts.type}
+                    label={''}
+                    name={''}
+                    onChange={() => {}}
+                    value={false}
+                />
+            );
+        if (opts.type === 'select')
+            return <Select onChange={() => {}} key={index} {...opts} />;
+        return <Input onChange={() => {}} key={index} {...opts} />;
     };
 
     return (
