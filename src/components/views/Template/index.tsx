@@ -196,9 +196,11 @@ function Template() {
           />
         </main>
         <section className="fields">
-          <h4>Fields ({template.fields.length})</h4>
-          <div className="add-field">
-            <Button onClick={_addField}>Add Field</Button>
+          <div className="fields-header">
+            <h4>Fields ({template.fields.length})</h4>
+            <div className="add-field">
+              <Button onClick={_addField}>Add Field</Button>
+            </div>
           </div>
           {!template.fields.length && <EmptyText>No Fields</EmptyText>}
           {template.fields.map((field) => (
@@ -234,28 +236,36 @@ function Template() {
 export default Template;
 
 const Wrapper = styled.section`
-  .delete-template {
-    margin: 0 0 0 1rem;
-  }
-
   main {
     margin: 0 0 1rem 0;
   }
 
   .fields {
-    position: relative;
+    .fields-header {
+      position: relative;
+      margin: 0 0 1rem 0;
+      height: 2rem;
 
-    .add-field {
-      position: absolute;
-      top: 0;
-      right: 0;
+      h4 {
+        height: 2rem;
+        line-height: 2rem;
+      }
+
+      .add-field {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
     }
   }
 
   .secondary-actions {
+    float: left;
   }
 
   .primary-actions {
+    float: right;
+
     & button + button {
       margin: 0 0 0 1rem;
     }

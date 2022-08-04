@@ -37,7 +37,7 @@ function Templates() {
           <Mapper templates={templates} onDelete={_onDelete} />
         )}
       </Card>
-      <div className="delete-button">
+      <div style={{ float: "right" }}>
         <Link type={EButtonType.AFFIRMATIVE} to="/template/new">
           New Template
         </Link>
@@ -65,13 +65,11 @@ const Mapper = ({
               </p>
             )}
           </TemplateLink>
-          <div>
-            <IconButton
-              type={EButtonType.DESTRUCTIVE}
-              onClick={() => onDelete(t.id)}
-              path="delete"
-            />
-          </div>
+          <IconButton
+            type={EButtonType.DESTRUCTIVE}
+            onClick={() => onDelete(t.id)}
+            path="delete"
+          />
         </div>
       ))}
     </>

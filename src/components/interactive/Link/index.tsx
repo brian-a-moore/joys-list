@@ -11,8 +11,8 @@ export default Link;
 
 const Wrapper = styled(RouterLink)`
   ${(props: PLink) => setColors(props)};
+  float: left;
   height: 2rem;
-  line-height: 2rem;
   margin: 0;
   padding: 0 1rem;
   border: none;
