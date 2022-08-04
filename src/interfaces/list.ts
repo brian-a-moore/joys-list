@@ -1,9 +1,6 @@
-export interface IListBase {
+export interface IList {
     id: string;
     title: string;
-}
-
-export interface IList extends IListBase {
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

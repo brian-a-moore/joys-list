@@ -17,7 +17,7 @@ import {
     getId
 } from '../../../helpers';
 import { InputValue } from '../../../interfaces/input';
-import { EButtonTypes } from '../../../interfaces/interactions';
+import { EButtonType } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
 import Field from './Field';
 
@@ -130,7 +130,7 @@ function Template() {
                     {!isNewTemplate && (
                         <div className="delete-template">
                             <IconButton
-                                type={EButtonTypes.DESTRUCTIVE}
+                                type={EButtonType.DESTRUCTIVE}
                                 path="delete"
                                 onClick={_deleteTemplate}
                             />
@@ -151,7 +151,7 @@ function Template() {
                 <aside>
                     <Button onClick={_addField}>Add Field</Button>
                     <Button onClick={_onCancel}>Cancel</Button>
-                    <Button type={EButtonTypes.AFFIRMATIVE}>
+                    <Button type={EButtonType.AFFIRMATIVE}>
                         {isNewTemplate ? 'Create ' : 'Update '} Template
                     </Button>
                 </aside>

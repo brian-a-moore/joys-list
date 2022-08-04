@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { deleteList, getLists } from '../../../api';
-import { EButtonTypes } from '../../../interfaces/interactions';
+import { EButtonType } from '../../../interfaces/interactions';
 import { IList } from '../../../interfaces/list';
 import { Card, EmptyText } from '../../display';
 import { IconButton, Link } from '../../interactive';
@@ -33,7 +33,7 @@ function Lists() {
                 )}
             </Card>
             <div className="delete-button">
-                <Link type={EButtonTypes.AFFIRMATIVE} to="/list/new">
+                <Link type={EButtonType.AFFIRMATIVE} to="/list/new">
                     New List
                 </Link>
             </div>
@@ -63,7 +63,7 @@ const Mapper = ({
                     </ListLink>
                     <div>
                         <IconButton
-                            type={EButtonTypes.DESTRUCTIVE}
+                            type={EButtonType.DESTRUCTIVE}
                             onClick={() => onDelete(l.id)}
                             path="delete"
                         />

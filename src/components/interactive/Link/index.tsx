@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { EButtonTypes, IPropsLink } from '../../../interfaces/interactions';
+import { EButtonType, IPropsLink } from '../../../interfaces/interactions';
 
 function Link({ children, ...rest }: { children: string; [x: string]: any }) {
     return <Wrapper {...rest}>{children}</Wrapper>;
@@ -42,7 +42,7 @@ const setColors = ({ type, disabled }: IPropsLink): string => {
         `;
     }
     switch (type) {
-        case EButtonTypes.AFFIRMATIVE:
+        case EButtonType.AFFIRMATIVE:
             return `
             background: var(--teal-500);
             color: var(--white);
@@ -51,7 +51,7 @@ const setColors = ({ type, disabled }: IPropsLink): string => {
                 background: var(--teal-600);
             }
         `;
-        case EButtonTypes.DESTRUCTIVE:
+        case EButtonType.DESTRUCTIVE:
             return `
             background: var(--rose-600);
             color: var(--white);

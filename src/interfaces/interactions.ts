@@ -1,10 +1,10 @@
-export enum EButtonTypes {
+export enum EButtonType {
     AFFIRMATIVE = 'AFFIRMATIVE',
     DESTRUCTIVE = 'DESTRUCTIVE'
 }
 
 export interface IPropsButton {
-    type?: EButtonTypes;
+    type?: EButtonType;
     disabled?: boolean;
     [x: string]: any;
 }

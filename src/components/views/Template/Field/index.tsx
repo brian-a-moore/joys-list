@@ -10,7 +10,7 @@ import {
     IFieldConstant,
     IDefaultFieldOption
 } from '../../../../interfaces/field';
-import { EButtonTypes } from '../../../../interfaces/interactions';
+import { EButtonType } from '../../../../interfaces/interactions';
 import { getFieldOptionConstants } from '../../../../helpers';
 
 function Field({
@@ -123,7 +123,7 @@ function Field({
                         path={showOptions ? 'minimize' : 'maximize'}
                     />
                     <IconButton
-                        type={EButtonTypes.DESTRUCTIVE}
+                        type={EButtonType.DESTRUCTIVE}
                         onClick={() => deleteField(field.id)}
                         path="close"
                     />
