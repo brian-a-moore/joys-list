@@ -118,7 +118,7 @@ function Field({
   return (
     <Wrapper>
       <div className="field-header">
-        <div className="inputs">
+        <div className="field-name">
           <Input
             type={EInputType.TEXT}
             name="fieldName"
@@ -126,6 +126,8 @@ function Field({
             value={field.fieldName}
             onChange={(name, value) => onFieldChange(field.id, name, value)}
           />
+        </div>
+        <div className="field-type">
           <Select
             name="fieldType"
             onChange={(name, value) => onFieldChange(field.id, name, value)}
@@ -133,7 +135,7 @@ function Field({
             value={field.fieldType}
           />
         </div>
-        <div className="actions">
+        <div className="field-actions">
           <IconButton
             onClick={(e: Event) => toggleOptions(e, field.id)}
             path={openFieldId === field.id ? "minimize" : "maximize"}
@@ -165,17 +167,21 @@ const Wrapper = styled.div`
 
   .field-header {
     height: 2rem;
+    display: flex;
 
-    .inputs {
-      & div + div {
-        margin: 0 0 0 1rem;
-      }
+    .field-name {
+      padding-right: 1rem;
     }
 
-    .actions {
-      & button + button {
-        margin: 0 0 0 1rem;
-      }
+    .field-name,
+    .field-type {
+      flex: 1;
+    }
+
+    .field-actions {
+      display: flex;
+      justify-content: space-between;
+      width: 5rem;
     }
   }
 

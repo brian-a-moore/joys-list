@@ -48,10 +48,15 @@ function Template() {
   const _addField = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
-    setTemplate((prevState) => ({
-      ...prevState,
-      fields: [...prevState.fields, getDefaultField(getId())],
-    }));
+    setTemplate((prevState) => {
+      if (prevState.fields.length >= 10) {
+        return prevState;
+      }
+      return {
+        ...prevState,
+        fields: [...prevState.fields, getDefaultField(getId())],
+      };
+    });
   };
 
   /**
@@ -184,9 +189,8 @@ function Template() {
   return (
     <Wrapper>
       <h1>{isNewTemplate ? "New " : "Update "}Template</h1>
-
       <form onSubmit={_onSubmit}>
-        <main>
+        <div className="title-container">
           <Input
             type="text"
             onChange={_onChange}
@@ -194,13 +198,13 @@ function Template() {
             placeholder="Template Title"
             value={template.title}
           />
-        </main>
-        <section className="fields">
+        </div>
+        <div className="fields">
           <div className="fields-header">
-            <h4>Fields ({template.fields.length})</h4>
-            <div className="add-field">
-              <Button onClick={_addField}>Add Field</Button>
-            </div>
+            <h4>Fields ({template.fields.length} of 10)</h4>
+            <Button onClick={_addField} disabled={template.fields.length >= 10}>
+              Add Field
+            </Button>
           </div>
           {!template.fields.length && <EmptyText>No Fields</EmptyText>}
           {template.fields.map((field) => (
@@ -214,7 +218,7 @@ function Template() {
               openFieldId={openFieldId}
             />
           ))}
-        </section>
+        </div>
         {!isNewTemplate && (
           <aside className="secondary-actions">
             <Button type={EButtonType.DESTRUCTIVE} onClick={_deleteTemplate}>
@@ -236,25 +240,25 @@ function Template() {
 export default Template;
 
 const Wrapper = styled.section`
-  main {
+  .title-container {
+    width: 100%;
+    max-width: 30rem;
     margin: 0 0 1rem 0;
   }
 
   .fields {
+    width: 100%;
     .fields-header {
-      position: relative;
       margin: 0 0 1rem 0;
       height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       h4 {
+        margin: 0;
         height: 2rem;
         line-height: 2rem;
-      }
-
-      .add-field {
-        position: absolute;
-        top: 0;
-        right: 0;
       }
     }
   }
