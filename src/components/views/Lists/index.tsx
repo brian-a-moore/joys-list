@@ -3,10 +3,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { deleteList, getLists } from '../../../api';
-import { Card, EmptyText } from '../../display';
-import { IconButton, Link } from '../../interactive';
 import { EButtonTypes } from '../../../interfaces/interactions';
 import { IList } from '../../../interfaces/list';
+import { Card, EmptyText } from '../../display';
+import { IconButton, Link } from '../../interactive';
 
 function Lists() {
     const [lists, setLists] = useState<IList[] | null>(null);
@@ -20,39 +20,18 @@ function Lists() {
         setLists(getLists());
     };
 
-    const renderLists = (): JSX.Element[] | JSX.Element | Element => {
-        if (lists === null) {
-            return <p>Loading....</p>;
-        }
-
-        if (!lists.length) {
-            return <EmptyText>No Lists</EmptyText>;
-        }
-
-        return lists.map(l => (
-            <div key={l.id} className="list-row">
-                <ListLink to={`/list/${l.id}`}>
-                    <span className="title">{l.title}</span>
-                    <span className="updated-at">
-                        <strong>Last Updated:</strong>{' '}
-                        {new Date(l.updatedAt).toDateString()}
-                    </span>
-                </ListLink>
-                <div>
-                    <IconButton
-                        type={EButtonTypes.DESTRUCTIVE}
-                        onClick={() => _onDelete(l.id)}
-                        path="delete"
-                    />
-                </div>
-            </div>
-        ));
-    };
-
     return (
         <Wrapper>
             <h1>Lists</h1>
-            <Card>{renderLists()}</Card>
+            <Card>
+                {lists === null ? (
+                    <p> Loading...</p>
+                ) : !lists.length ? (
+                    <EmptyText>No Lists</EmptyText>
+                ) : (
+                    <Mapper lists={lists} onDelete={_onDelete} />
+                )}
+            </Card>
             <div className="delete-button">
                 <Link type={EButtonTypes.AFFIRMATIVE} to="/list/new">
                     New List
@@ -61,6 +40,39 @@ function Lists() {
         </Wrapper>
     );
 }
+
+const Mapper = ({
+    lists,
+    onDelete
+}: {
+    lists: IList[];
+    onDelete: Function;
+}) => {
+    return (
+        <>
+            {lists.map(l => (
+                <div key={l.id} className="list-row">
+                    <ListLink to={`/list/${l.id}`}>
+                        <span className="title">{l.title}</span>
+                        {l.updatedAt && (
+                            <span className="updated-at">
+                                <strong>Last Updated:</strong>{' '}
+                                {new Date(l.updatedAt).toDateString()}
+                            </span>
+                        )}
+                    </ListLink>
+                    <div>
+                        <IconButton
+                            type={EButtonTypes.DESTRUCTIVE}
+                            onClick={() => onDelete(l.id)}
+                            path="delete"
+                        />
+                    </div>
+                </div>
+            ))}
+        </>
+    );
+};
 
 export default Lists;
 

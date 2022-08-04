@@ -1,6 +1,5 @@
 import { getId } from '../helpers';
 import { EFieldType, IField } from '../interfaces/field';
-import { ITemplateBase } from '../interfaces/template';
 
 export const DEFAULT_FIELD = (id: string): IField => ({
     id,

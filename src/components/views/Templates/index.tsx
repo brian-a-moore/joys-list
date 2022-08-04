@@ -20,39 +20,18 @@ function Templates() {
         setTemplates(getTemplates());
     };
 
-    const renderTemplates = (): JSX.Element[] | JSX.Element | Element => {
-        if (templates === null) {
-            return <p>Loading....</p>;
-        }
-
-        if (!templates.length) {
-            return <EmptyText>No Templates</EmptyText>;
-        }
-
-        return templates.map(t => (
-            <div key={t.id} className="template-row">
-                <TemplateLink to={`/template/${t.id}`}>
-                    <span className="title">{t.title}</span>
-                    <span className="updated-at">
-                        <strong>Last Updated:</strong>{' '}
-                        {new Date(t.updatedAt).toDateString()}
-                    </span>
-                </TemplateLink>
-                <div>
-                    <IconButton
-                        type={EButtonTypes.DESTRUCTIVE}
-                        onClick={() => _onDelete(t.id)}
-                        path="delete"
-                    />
-                </div>
-            </div>
-        ));
-    };
-
     return (
         <Wrapper>
             <h1>Templates</h1>
-            <Card>{renderTemplates()}</Card>
+            <Card>
+                {templates === null ? (
+                    <p> Loading...</p>
+                ) : !templates.length ? (
+                    <EmptyText>No Templates</EmptyText>
+                ) : (
+                    <Mapper templates={templates} onDelete={_onDelete} />
+                )}
+            </Card>
             <div className="delete-button">
                 <Link type={EButtonTypes.AFFIRMATIVE} to="/template/new">
                     New Template
@@ -61,6 +40,39 @@ function Templates() {
         </Wrapper>
     );
 }
+
+const Mapper = ({
+    templates,
+    onDelete
+}: {
+    templates: ITemplate[];
+    onDelete: Function;
+}) => {
+    return (
+        <>
+            {templates.map(t => (
+                <div key={t.id} className="template-row">
+                    <TemplateLink to={`/template/${t.id}`}>
+                        <span className="title">{t.title}</span>
+                        {t.updatedAt && (
+                            <span className="updated-at">
+                                <strong>Last Updated:</strong>{' '}
+                                {new Date(t.updatedAt).toDateString()}
+                            </span>
+                        )}
+                    </TemplateLink>
+                    <div>
+                        <IconButton
+                            type={EButtonTypes.DESTRUCTIVE}
+                            onClick={() => onDelete(t.id)}
+                            path="delete"
+                        />
+                    </div>
+                </div>
+            ))}
+        </>
+    );
+};
 
 export default Templates;
 
