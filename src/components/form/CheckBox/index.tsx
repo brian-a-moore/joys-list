@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mdiCheck } from '@mdi/js';
 import { Icon } from '@mdi/react';
+
 import { PInput } from '../../../interfaces/input';
 
 const CheckBox: React.FC<PInput> = ({ onChange, name, label, value }) => {

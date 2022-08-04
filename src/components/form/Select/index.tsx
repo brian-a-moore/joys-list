@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { PInput } from '../../../interfaces/input';
 
 const SelectInput: React.FC<PInput> = ({ onChange, name, options, value }) => {

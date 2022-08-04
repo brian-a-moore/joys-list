@@ -8,19 +8,19 @@ import {
     deleteTemplate,
     updateTemplate
 } from '../../../api';
-import { Input } from '../../form';
-import { Button, IconButton } from '../../interactive';
 import { DEFAULT_TEMPLATE } from '../../../data/constants';
 import {
     getDefaultField,
     getDefaultFieldOptions,
     getId
 } from '../../../helpers';
+import { IField, IFieldOptions } from '../../../interfaces/field';
 import { InputValue } from '../../../interfaces/input';
 import { EButtonType } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
+import { Input } from '../../form';
+import { Button, IconButton } from '../../interactive';
 import Field from './Field';
-import { IField, IFieldOptions } from '../../../interfaces/field';
 
 function Template() {
     const { id } = useParams();

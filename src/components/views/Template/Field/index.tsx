@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { CheckBox, Input, Select } from '../../../form';
-import { IconButton } from '../../../interactive';
 import { FIELD_OPTS } from '../../../../data/constants';
+import { getFieldOptionConstants, getId } from '../../../../helpers';
 import { EInputType } from '../../../../interfaces/input';
 import {
     EFieldType,
@@ -12,7 +11,8 @@ import {
     IFieldOptions
 } from '../../../../interfaces/field';
 import { EButtonType } from '../../../../interfaces/interactions';
-import { getFieldOptionConstants, getId } from '../../../../helpers';
+import { CheckBox, Input, Select } from '../../../form';
+import { IconButton } from '../../../interactive';
 
 function Field({
     field,
@@ -56,6 +56,7 @@ function Field({
                             onChange={(name, value) =>
                                 onOptChange(field.id, name, value)
                             }
+                            // TODO: Fix - this isn't going to work for boolean values
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -70,6 +71,7 @@ function Field({
                             onChange={(name, value) =>
                                 onOptChange(field.id, name, value)
                             }
+                            // TODO: This isn't going to work for falsy values
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -84,6 +86,7 @@ function Field({
                             onChange={(name, value) =>
                                 onOptChange(field.id, name, value)
                             }
+                            // TODO: This isn't going to work for falsy values
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -99,6 +102,7 @@ function Field({
                                 onOptChange(field.id, name, value)
                             }
                             options={c.options}
+                            // TODO: This isn't going to work for falsy values
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -113,6 +117,7 @@ function Field({
                             onChange={(name, value) =>
                                 onOptChange(field.id, name, value)
                             }
+                            // TODO: This isn't going to work for falsy values
                             value={opts[c.name] || c.value}
                         />
                     );
