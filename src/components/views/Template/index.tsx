@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
 
 import {
   getTemplate,
@@ -22,6 +21,7 @@ import { EmptyText } from "../../display";
 import { Input } from "../../form";
 import { Button } from "../../interactive";
 import Field from "./Field";
+import { Wrapper } from "./style";
 
 function Template() {
   const { id } = useParams();
@@ -41,10 +41,6 @@ function Template() {
     }
   }, [isNewTemplate, id]);
 
-  /**
-   * Adds a new field row to the template and populates it with a default state
-   * @param e Event
-   */
   const _addField = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
@@ -59,10 +55,6 @@ function Template() {
     });
   };
 
-  /**
-   * Deletes a field from the template
-   * @param id The ID of the field
-   */
   const _deleteField = (id: string) => {
     setTemplate((prevState) => ({
       ...prevState,
@@ -70,30 +62,16 @@ function Template() {
     }));
   };
 
-  /**
-   * Deletes the current template and returns to the previous page
-   * @param e Event
-   */
   const _deleteTemplate = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     deleteTemplate(id || template.id);
     navigate(-1);
   };
 
-  /**
-   * Returns to the previous page
-   * @param e Event
-   */
   const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     navigate(-1);
   };
-
-  /**
-   *  Input control for top-level form fields
-   * @param name The name of the key being updated in the form
-   * @param value The update value
-   */
   const _onChange = (name: string, value: InputValue) => {
     setTemplate((prevState) => ({
       ...prevState,
@@ -101,12 +79,6 @@ function Template() {
     }));
   };
 
-  /**
-   *  Input control for field changes
-   * @param id The ID for the specific field being updated
-   * @param name The name of the key being updated in the field
-   * @param value The update value
-   */
   const _onFieldChange = (
     id: string,
     name: keyof IField,
@@ -133,13 +105,7 @@ function Template() {
     });
   };
 
-  /**
-   * TODO: Fix - Input fields lose focus after each onChange event
-   * Input control for field options changes
-   * @param id The ID for the specific field being updated
-   * @param name The name of the key being updated in the field options
-   * @param value The update value
-   */
+  // TODO: Fix - Input fields lose focus after each onChange event
   const _onOptChange = (
     id: string,
     name: keyof IFieldOptions,
@@ -157,9 +123,6 @@ function Template() {
     });
   };
 
-  /**
-   * Submits the template to either a create or update function
-   */
   const _onSubmit = () => {
     try {
       if (isNewTemplate) {
@@ -201,12 +164,18 @@ function Template() {
         </div>
         <div className="fields">
           <div className="fields-header">
-            <h4>Fields ({template.fields.length} of 10)</h4>
+            <h4>
+              Fields <span>({template.fields.length} of 10)</span>
+            </h4>
             <Button onClick={_addField} disabled={template.fields.length >= 10}>
               Add Field
             </Button>
           </div>
-          {!template.fields.length && <EmptyText>No Fields</EmptyText>}
+          {!template.fields.length && (
+            <div style={{ marginBottom: "1rem" }}>
+              <EmptyText>No Fields</EmptyText>
+            </div>
+          )}
           {template.fields.map((field) => (
             <Field
               key={field.id}
@@ -238,40 +207,3 @@ function Template() {
 }
 
 export default Template;
-
-const Wrapper = styled.section`
-  .title-container {
-    width: 100%;
-    max-width: 30rem;
-    margin: 0 0 1rem 0;
-  }
-
-  .fields {
-    width: 100%;
-    .fields-header {
-      margin: 0 0 1rem 0;
-      height: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      h4 {
-        margin: 0;
-        height: 2rem;
-        line-height: 2rem;
-      }
-    }
-  }
-
-  .secondary-actions {
-    float: left;
-  }
-
-  .primary-actions {
-    float: right;
-
-    & button + button {
-      margin: 0 0 0 1rem;
-    }
-  }
-`;

@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import { FIELD_OPTS } from "../../../../data/constants";
 import { getFieldOptionConstants, getId } from "../../../../helpers";
 import { EInputType } from "../../../../interfaces/input";
@@ -12,6 +10,7 @@ import {
 import { EButtonType } from "../../../../interfaces/interactions";
 import { CheckBox, Input, Select } from "../../../form";
 import { IconButton } from "../../../interactive";
+import { Wrapper } from "./style";
 
 function Field({
   field,
@@ -28,93 +27,6 @@ function Field({
   toggleOptions: Function;
   openFieldId: string | null;
 }) {
-  /**
-   * Renders the options' inputs on screen
-   * @param key Field type
-   * @param opts The selected options for the current field
-   * @returns A list of JSX elements
-   */
-  const _renderOptions = (key: EFieldType, opts: IFieldOptions) => {
-    const constants = getFieldOptionConstants(key);
-
-    return constants.map((c: IFieldConstant) => {
-      switch (c.type) {
-        case EInputType.CHECKBOX: {
-          return (
-            <div className="field-option" key={getId()}>
-              <CheckBox
-                name={c.name}
-                label={c.label}
-                onChange={(name, value) => onOptChange(field.id, name, value)}
-                // TODO: Fix - this isn't going to work for boolean values
-                value={opts[c.name] || c.value}
-              />
-            </div>
-          );
-        }
-        case EInputType.DATE: {
-          return (
-            <div className="field-option" key={getId()}>
-              <Input
-                type={EInputType.DATE}
-                name={c.name}
-                label={c.label}
-                onChange={(name, value) => onOptChange(field.id, name, value)}
-                // TODO: This isn't going to work for falsy values
-                value={opts[c.name] || c.value}
-              />
-            </div>
-          );
-        }
-        case EInputType.NUMBER: {
-          return (
-            <div className="field-option" key={getId()}>
-              <Input
-                type={EInputType.NUMBER}
-                name={c.name}
-                label={c.label}
-                onChange={(name, value) => onOptChange(field.id, name, value)}
-                // TODO: This isn't going to work for falsy values
-                value={opts[c.name] || c.value}
-              />
-            </div>
-          );
-        }
-        case EInputType.SELECT: {
-          return (
-            <div className="field-option" key={getId()}>
-              <Select
-                type={EInputType.NUMBER}
-                name={c.name}
-                label={c.label}
-                onChange={(name, value) => onOptChange(field.id, name, value)}
-                options={c.options}
-                // TODO: This isn't going to work for falsy values
-                value={opts[c.name] || c.value}
-              />
-            </div>
-          );
-        }
-        case EInputType.TEXT: {
-          return (
-            <div className="field-option" key={getId()}>
-              <Input
-                type={EInputType.TEXT}
-                name={c.name}
-                label={c.label}
-                onChange={(name, value) => onOptChange(field.id, name, value)}
-                // TODO: This isn't going to work for falsy values
-                value={opts[c.name] || c.value}
-              />
-            </div>
-          );
-        }
-        default:
-          throw new Error("Unknown field type");
-      }
-    });
-  };
-
   return (
     <Wrapper>
       <div className="field-header">
@@ -150,7 +62,7 @@ function Field({
       {openFieldId === field.id && (
         <div className="field-options">
           <h6>Options:</h6>
-          <>{_renderOptions(field.fieldType, field.opts)}</>
+          <>{renderOptions(field, field.fieldType, field.opts, onOptChange)}</>
         </div>
       )}
     </Wrapper>
@@ -159,42 +71,88 @@ function Field({
 
 export default Field;
 
-const Wrapper = styled.div`
-  margin: 0 0 1rem 0;
-  padding: 1rem;
-  border: 1px solid var(--gray-200);
-  border-radius: 4px;
+const renderOptions = (
+  field: IField,
+  key: EFieldType,
+  opts: IFieldOptions,
+  onOptChange: Function,
+) => {
+  const constants = getFieldOptionConstants(key);
 
-  .field-header {
-    height: 2rem;
-    display: flex;
-
-    .field-name {
-      padding-right: 1rem;
+  return constants.map((c: IFieldConstant) => {
+    switch (c.type) {
+      case EInputType.CHECKBOX: {
+        return (
+          <div className="field-option" key={getId()}>
+            <CheckBox
+              name={c.name}
+              label={c.label}
+              onChange={(name, value) => onOptChange(field.id, name, value)}
+              // TODO: Fix - this isn't going to work for boolean values
+              value={opts[c.name] || c.value}
+            />
+          </div>
+        );
+      }
+      case EInputType.DATE: {
+        return (
+          <div className="field-option" key={getId()}>
+            <Input
+              type={EInputType.DATE}
+              name={c.name}
+              label={c.label}
+              onChange={(name, value) => onOptChange(field.id, name, value)}
+              // TODO: This isn't going to work for falsy values
+              value={opts[c.name] || c.value}
+            />
+          </div>
+        );
+      }
+      case EInputType.NUMBER: {
+        return (
+          <div className="field-option" key={getId()}>
+            <Input
+              type={EInputType.NUMBER}
+              name={c.name}
+              label={c.label}
+              onChange={(name, value) => onOptChange(field.id, name, value)}
+              // TODO: This isn't going to work for falsy values
+              value={opts[c.name] || c.value}
+            />
+          </div>
+        );
+      }
+      case EInputType.SELECT: {
+        return (
+          <div className="field-option" key={getId()}>
+            <Select
+              type={EInputType.NUMBER}
+              name={c.name}
+              label={c.label}
+              onChange={(name, value) => onOptChange(field.id, name, value)}
+              options={c.options}
+              // TODO: This isn't going to work for falsy values
+              value={opts[c.name] || c.value}
+            />
+          </div>
+        );
+      }
+      case EInputType.TEXT: {
+        return (
+          <div className="field-option" key={getId()}>
+            <Input
+              type={EInputType.TEXT}
+              name={c.name}
+              label={c.label}
+              onChange={(name, value) => onOptChange(field.id, name, value)}
+              // TODO: This isn't going to work for falsy values
+              value={opts[c.name] || c.value}
+            />
+          </div>
+        );
+      }
+      default:
+        throw new Error("Unknown field type");
     }
-
-    .field-name,
-    .field-type {
-      flex: 1;
-    }
-
-    .field-actions {
-      display: flex;
-      justify-content: space-between;
-      width: 5rem;
-    }
-  }
-
-  .field-options {
-    background: var(--gray-100);
-    margin: 1rem 0 0 0;
-    padding: 1rem;
-    padding-bottom: 0;
-    border: 1px solid var(--gray-200);
-    border-radius: 4px;
-
-    .field-option {
-      margin: 0 0 1rem 0;
-    }
-  }
-`;
+  });
+};
