@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
 function PageNotFound() {
   return (
@@ -9,5 +9,3 @@ function PageNotFound() {
 }
 
 export default PageNotFound;
-
-const Wrapper = styled.section``;

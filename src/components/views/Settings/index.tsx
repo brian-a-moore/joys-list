@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 import { getSettings, updateSettings } from "../../../api";
 import { InputValue } from "../../../interfaces/input";
 import { ISettings } from "../../../interfaces/settings";
 import { CheckBox, Input } from "../../form";
 import { Button } from "../../interactive";
+import { Wrapper } from "./style";
 
 function Settings() {
   const navigate = useNavigate();
@@ -16,20 +16,11 @@ function Settings() {
     setSettings(getSettings());
   }, []);
 
-  /**
-   * Navigates back to previous page
-   * @param e Event
-   */
   const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     navigate(-1);
   };
 
-  /**
-   * Input control onChange form events
-   * @param name Settings key name
-   * @param value Update value
-   */
   const _onChange = (name: string, value: InputValue) => {
     setSettings((prevState) => {
       if (prevState) {
@@ -49,43 +40,36 @@ function Settings() {
     }
   };
 
-  if (settings === null) {
-    return (
-      <Wrapper>
-        <h1>Settings</h1>
-        <p>Loading...</p>
-      </Wrapper>
-    );
-  }
-
   return (
     <Wrapper>
       <h1>Settings</h1>
-      <form onSubmit={_onSubmit}>
-        <div>
-          <Input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            onChange={_onChange}
-            value={settings.firstName}
-          />
-          <CheckBox
-            name="darkMode"
-            label="Dark Mode"
-            onChange={_onChange}
-            value={settings.darkMode}
-          />
-        </div>
-        <div>
-          <Button onClick={_onCancel}>Cancel</Button>
-          <Button>Save</Button>
-        </div>
-      </form>
+      {settings === null ? (
+        <p>Loading...</p>
+      ) : (
+        <form onSubmit={_onSubmit}>
+          <div>
+            <Input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={_onChange}
+              value={settings.firstName}
+            />
+            <CheckBox
+              name="darkMode"
+              label="Dark Mode"
+              onChange={_onChange}
+              value={settings.darkMode}
+            />
+          </div>
+          <div>
+            <Button onClick={_onCancel}>Cancel</Button>
+            <Button>Save</Button>
+          </div>
+        </form>
+      )}
     </Wrapper>
   );
 }
 
 export default Settings;
-
-const Wrapper = styled.section``;

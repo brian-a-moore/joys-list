@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Wrapper } from "./style";
 
 function List() {
   return (
@@ -9,5 +9,3 @@ function List() {
 }
 
 export default List;
-
-const Wrapper = styled.section``;

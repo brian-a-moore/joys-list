@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import { getSettings } from "../../../api";
+import { Wrapper } from "./style";
 
 function Home() {
   const [firstName, setFirstName] = useState<string | null>(null);
@@ -25,5 +25,3 @@ function Home() {
 }
 
 export default Home;
-
-const Wrapper = styled.section``;
