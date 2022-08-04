@@ -10,17 +10,12 @@ import {
 } from '../../../api';
 import { Input } from '../../form';
 import { Button, IconButton } from '../../interactive';
-import {
-    DEFAULT_FIELD,
-    // DEFAULT_OPTS,
-    DEFAULT_TEMPLATE
-} from '../../../data/constants';
+import { DEFAULT_FIELD, DEFAULT_TEMPLATE } from '../../../data/constants';
 import { getId } from '../../../helpers';
 import { InputValue } from '../../../interfaces/input';
 import { EButtonTypes } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
 import Field from './Field';
-import { IField } from '../../../interfaces/field';
 
 function Template() {
     const { id } = useParams();
@@ -73,17 +68,7 @@ function Template() {
         }));
     };
 
-    const _onFieldChange = (id: string, name: string, value: InputValue) => {
-        setTemplate(prevState => {
-            const fields: IField[] = [...prevState.fields];
-            fields.find(f => f.id === id)[name] = value;
-            
-            if (name === 'fieldType') {
-                fields.find(f => f.id === id).opts = DEFAULT_OPTS[value];
-            }
-            return { ...prevState, fields };
-        });
-    };
+    const _onFieldChange = (id: string, name: string, value: InputValue) => {};
 
     const _onSubmit = () => {
         try {

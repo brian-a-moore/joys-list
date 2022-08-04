@@ -12,26 +12,6 @@ export const DEFAULT_FIELD = (id: string): IField => ({
 
 export const DEFAULT_LISTS = [];
 
-export const DEFAULT_OPTS = {
-    checkbox: {
-        defaultValue: false
-    },
-    date: {
-        defaultValue: undefined,
-        dateFormat: 'MM/DD/YYYY',
-        allowPastDates: true
-    },
-    number: {
-        defaultValue: undefined,
-        allowNegative: true,
-        isDollarFormatted: false,
-        showCents: true
-    },
-    text: {
-        defaultValue: ''
-    }
-};
-
 export const DEFAULT_SETTINGS = {
     firstName: 'New User',
     darkMode: false,
