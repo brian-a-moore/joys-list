@@ -4,6 +4,7 @@ import {
     IFieldConstant,
     IDefaultFieldOption
 } from '../interfaces/field';
+import { EInputType } from '../interfaces/input';
 
 export const getId = (): string => {
     return Math.random().toString();
@@ -51,7 +52,7 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
         case EFieldType.CHECKBOX:
             return [
                 {
-                    type: EFieldType.CHECKBOX,
+                    type: EInputType.CHECKBOX,
                     name: 'defaultValue',
                     label: 'Default Value',
                     value: false
@@ -60,13 +61,13 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
         case EFieldType.DATE:
             return [
                 {
-                    type: EFieldType.NUMBER,
+                    type: EInputType.NUMBER,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: undefined
                 },
                 {
-                    type: 'select',
+                    type: EInputType.SELECT,
                     name: 'dateFormat',
                     placeholder: 'Date Format',
                     options: [
@@ -84,7 +85,7 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
                     value: 'MM/DD/YYYY'
                 },
                 {
-                    type: EFieldType.CHECKBOX,
+                    type: EInputType.CHECKBOX,
                     name: 'allowPastDates',
                     label: 'Allow Dates in Past',
                     value: true
@@ -93,19 +94,19 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
         case EFieldType.NUMBER:
             return [
                 {
-                    type: EFieldType.NUMBER,
+                    type: EInputType.NUMBER,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: undefined
                 },
                 {
-                    type: EFieldType.CHECKBOX,
+                    type: EInputType.CHECKBOX,
                     name: 'allowNegative',
                     label: 'Allow Negative',
                     value: true
                 },
                 {
-                    type: EFieldType.CHECKBOX,
+                    type: EInputType.CHECKBOX,
                     name: 'isDollarFormatted',
                     label: 'Dollar Format',
                     value: true
@@ -120,7 +121,7 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
         case EFieldType.TEXT:
             return [
                 {
-                    type: EFieldType.TEXT,
+                    type: EInputType.TEXT,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: ''

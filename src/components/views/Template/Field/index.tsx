@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Input, Select } from '../../../form';
+import { CheckBox, Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
-import { EFieldType, FIELD_OPTS } from '../../../../data/constants';
-import { InputValue } from '../../../../interfaces/input';
+import { FIELD_OPTS } from '../../../../data/constants';
+import { EInputType, InputValue } from '../../../../interfaces/input';
 import {
     IField,
     IFieldConstant,
@@ -32,19 +32,62 @@ function Field({
     const _renderOptions = (key: string, opts: IDefaultFieldOption) => {
         const constants = getFieldOptionConstants(key);
 
-        return constants.map((opt: IFieldConstant) => {
-            switch (opt.type) {
-                case EFieldType.CHECKBOX: {
-                    return opt.type;
+        return constants.map((c: IFieldConstant) => {
+            switch (c.type) {
+                case EInputType.CHECKBOX: {
+                    return (
+                        <CheckBox
+                            name={c.name}
+                            label={c.label}
+                            onChange={() => {}}
+                            value={c.value}
+                        />
+                    );
                 }
-                case EFieldType.DATE: {
-                    return opt.type;
+                case EInputType.DATE: {
+                    return (
+                        <Input
+                            type={EInputType.DATE}
+                            name={c.name}
+                            label={c.label}
+                            onChange={() => {}}
+                            value={c.value}
+                        />
+                    );
                 }
-                case EFieldType.NUMBER: {
-                    return opt.type;
+                case EInputType.NUMBER: {
+                    return (
+                        <Input
+                            type={EInputType.NUMBER}
+                            name={c.name}
+                            label={c.label}
+                            onChange={() => {}}
+                            value={c.value}
+                        />
+                    );
                 }
-                case EFieldType.TEXT: {
-                    return opt.type;
+                case EInputType.SELECT: {
+                    return (
+                        <Select
+                            type={EInputType.NUMBER}
+                            name={c.name}
+                            label={c.label}
+                            onChange={() => {}}
+                            options={c.options}
+                            value={c.value}
+                        />
+                    );
+                }
+                case EInputType.TEXT: {
+                    return (
+                        <Input
+                            type={EInputType.TEXT}
+                            name={c.name}
+                            label={c.label}
+                            onChange={() => {}}
+                            value={c.value}
+                        />
+                    );
                 }
                 default:
                     throw new Error('Unknown field type');
@@ -90,7 +133,6 @@ function Field({
                 <div className="field-options">
                     <h6>Options:</h6>
                     <>{_renderOptions(field.fieldType, field.opts)}</>
-                    <p>{JSON.stringify(field.opts)}</p>
                 </div>
             )}
         </Wrapper>

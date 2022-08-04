@@ -1,5 +1,13 @@
 export type InputValue = any;
 
+export enum EInputType {
+    CHECKBOX = 'checkbox',
+    DATE = 'date',
+    NUMBER = 'number',
+    SELECT = 'select',
+    TEXT = 'text'
+}
+
 export interface PInput {
     name: string;
     label?: string;
