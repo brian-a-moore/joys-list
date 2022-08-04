@@ -77,6 +77,8 @@ function Template() {
             const fields = [...prevState.fields];
             const index = fields.findIndex(f => f.id === id);
 
+            console.log(id, name, value);
+
             if (index > -1) {
                 // Update the field value
                 fields[index] = {

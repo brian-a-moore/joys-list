@@ -100,21 +100,21 @@ function Field({
             <div className="field-header">
                 <div className="inputs">
                     <Input
-                        type="text"
+                        type={EInputType.TEXT}
                         name="fieldName"
                         placeholder="Field Name"
                         value={field.fieldName}
-                        onChange={(name: string, value: InputValue) =>
+                        onChange={(name, value) =>
                             onFieldChange(field.id, name, value)
                         }
                     />
                     <Select
                         name="fieldType"
-                        value={field.fieldType}
-                        onChange={(name: string, value: InputValue) =>
+                        onChange={(name, value) =>
                             onFieldChange(field.id, name, value)
                         }
                         options={FIELD_OPTS}
+                        value={field.fieldType}
                     />
                 </div>
                 <div className="actions">
