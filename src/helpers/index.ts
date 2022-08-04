@@ -112,7 +112,7 @@ export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
                     value: true
                 },
                 {
-                    type: EFieldType.CHECKBOX,
+                    type: EInputType.CHECKBOX,
                     name: 'showCents',
                     label: 'Show Cents',
                     value: true

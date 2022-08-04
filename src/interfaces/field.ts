@@ -1,4 +1,4 @@
-import { InputValue } from './input';
+import { InputValue, EInputType } from './input';
 
 export enum EFieldType {
     CHECKBOX = 'checkbox',
@@ -15,8 +15,8 @@ export interface IField {
 }
 
 export interface IFieldConstant {
-    type: string;
-    name: string;
+    type: EInputType;
+    name: keyof IFieldOptions;
     label?: string;
     placeholder?: string;
     options?: InputValue[];

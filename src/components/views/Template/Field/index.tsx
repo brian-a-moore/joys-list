@@ -40,8 +40,7 @@ function Field({
                             name={c.name}
                             label={c.label}
                             onChange={() => {}}
-                            // TODO: fix
-                            value={c.value}
+                            value={opts[c.name] || c.value}
                         />
                     );
                 }
@@ -52,7 +51,7 @@ function Field({
                             name={c.name}
                             label={c.label}
                             onChange={() => {}}
-                            value={c.value}
+                            value={opts[c.name] || c.value}
                         />
                     );
                 }
@@ -63,7 +62,7 @@ function Field({
                             name={c.name}
                             label={c.label}
                             onChange={() => {}}
-                            value={c.value}
+                            value={opts[c.name] || c.value}
                         />
                     );
                 }
@@ -75,7 +74,7 @@ function Field({
                             label={c.label}
                             onChange={() => {}}
                             options={c.options}
-                            value={c.value}
+                            value={opts[c.name] || c.value}
                         />
                     );
                 }
