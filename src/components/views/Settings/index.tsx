@@ -21,10 +21,12 @@ function Settings() {
     };
 
     const _onChange = (name: string, value: InputValue) => {
-        setSettings(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        setSettings(prevState => {
+            if (prevState) {
+                return { ...prevState, [name]: value };
+            }
+            return null;
+        });
     };
 
     const _onSubmit = (e: React.FormEvent) => {
