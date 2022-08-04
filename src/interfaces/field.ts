@@ -25,7 +25,7 @@ export interface IFieldConstant {
 
 export interface IFieldOptions {
     defaultValue: InputValue;
-    dateFormat?: string;
+    dateFormat?: 'MM/DD/YYYY' | 'YYYY/MM/DD';
     allowPastDates?: boolean;
     allowNegative?: boolean;
     isDollarFormatted?: boolean;

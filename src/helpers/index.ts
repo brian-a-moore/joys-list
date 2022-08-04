@@ -6,10 +6,19 @@ import {
 } from '../interfaces/field';
 import { EInputType } from '../interfaces/input';
 
+/**
+ * Generate a unique ID
+ * @returns an ID string
+ */
 export const getId = (): string => {
     return Math.random().toString();
 };
 
+/**
+ * Returns a default field
+ * @param id A unique ID
+ * @returns Default field
+ */
 export const getDefaultField = (id: string): IField => ({
     id,
     fieldName: '',
@@ -19,7 +28,12 @@ export const getDefaultField = (id: string): IField => ({
     }
 });
 
-export const getDefaultFieldOptions = (key: string): IFieldOptions => {
+/**
+ * Get the default field option values by field type
+ * @param key Key of a field type
+ * @returns Default field options
+ */
+export const getDefaultFieldOptions = (key: EFieldType): IFieldOptions => {
     switch (key) {
         case EFieldType.CHECKBOX:
             return {
@@ -47,6 +61,11 @@ export const getDefaultFieldOptions = (key: string): IFieldOptions => {
     }
 };
 
+/**
+ * Get the values necessary to build the field option form based on the field type
+ * @param key Key of a field type
+ * @returns Field option constants
+ */
 export const getFieldOptionConstants = (key: EFieldType): IFieldConstant[] => {
     switch (key) {
         case EFieldType.CHECKBOX:
