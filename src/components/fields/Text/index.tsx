@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function TextField() {
-    return (
-        <Wrapper>
-            <span>Text</span>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <span>Text</span>
+    </Wrapper>
+  );
 }
 
 export default TextField;

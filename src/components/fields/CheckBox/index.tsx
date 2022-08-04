@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function CheckBoxField() {
-    return (
-        <Wrapper>
-            <span>Check Box</span>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <span>Check Box</span>
+    </Wrapper>
+  );
 }
 
 export default CheckBoxField;

@@ -1,3 +1,3 @@
-export * from './list';
-export * from './settings';
-export * from './template';
+export * from "./list";
+export * from "./settings";
+export * from "./template";

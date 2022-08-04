@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function DateField() {
-    return (
-        <Wrapper>
-            <span>Date</span>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <span>Date</span>
+    </Wrapper>
+  );
 }
 
 export default DateField;

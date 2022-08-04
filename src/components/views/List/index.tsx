@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function List() {
-    return (
-        <Wrapper>
-            <span>List</span>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <span>List</span>
+    </Wrapper>
+  );
 }
 
 export default List;

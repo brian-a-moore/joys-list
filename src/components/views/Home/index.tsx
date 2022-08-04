@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
-import { getSettings } from '../../../api';
+import { getSettings } from "../../../api";
 
 function Home() {
-    const [firstName, setFirstName] = useState<string | null>(null);
+  const [firstName, setFirstName] = useState<string | null>(null);
 
-    useEffect(() => {
-        const settings = getSettings();
+  useEffect(() => {
+    const settings = getSettings();
 
-        setFirstName(settings.firstName || 'Friend');
-    }, []);
+    setFirstName(settings.firstName || "Friend");
+  }, []);
 
-    return (
-        <Wrapper>
-            <h1>Home</h1>
-            {firstName === null ? (
-                <p>Loading...</p>
-            ) : (
-                <p>Welcome back, {firstName}!</p>
-            )}
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <h1>Home</h1>
+      {firstName === null ? (
+        <p>Loading...</p>
+      ) : (
+        <p>Welcome back, {firstName}!</p>
+      )}
+    </Wrapper>
+  );
 }
 
 export default Home;

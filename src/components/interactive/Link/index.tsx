@@ -1,49 +1,49 @@
-import styled from 'styled-components';
-import { Link as RouterLink } from 'react-router-dom';
+import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
-import { EButtonType, PLink } from '../../../interfaces/interactions';
+import { EButtonType, PLink } from "../../../interfaces/interactions";
 
 function Link({ children, ...rest }: { children: string; [x: string]: any }) {
-    return <Wrapper {...rest}>{children}</Wrapper>;
+  return <Wrapper {...rest}>{children}</Wrapper>;
 }
 
 export default Link;
 
 const Wrapper = styled(RouterLink)`
-    ${(props: PLink) => setColors(props)};
-    float: left;
-    height: 2rem;
-    line-height: 2rem;
-    margin: 0;
-    padding: 0 1rem;
-    border: none;
-    border-radius: 4px;
-    overflow: hidden;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    text-decoration: none;
+  ${(props: PLink) => setColors(props)};
+  float: left;
+  height: 2rem;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
 
-    &:enabled {
-        transition: transform 0.25s ease;
-        cursor: pointer;
-    }
+  &:enabled {
+    transition: transform 0.25s ease;
+    cursor: pointer;
+  }
 
-    &:enabled:active {
-        transform: scale(0.9);
-    }
+  &:enabled:active {
+    transform: scale(0.9);
+  }
 `;
 
 const setColors = ({ type, disabled }: PLink): string => {
-    if (disabled) {
-        return `
+  if (disabled) {
+    return `
             background: var(--gray-200);
             color: var(--gray-400);
             cursor: default;
         `;
-    }
-    switch (type) {
-        case EButtonType.AFFIRMATIVE:
-            return `
+  }
+  switch (type) {
+    case EButtonType.AFFIRMATIVE:
+      return `
             background: var(--teal-500);
             color: var(--white);
 
@@ -51,8 +51,8 @@ const setColors = ({ type, disabled }: PLink): string => {
                 background: var(--teal-600);
             }
         `;
-        case EButtonType.DESTRUCTIVE:
-            return `
+    case EButtonType.DESTRUCTIVE:
+      return `
             background: var(--rose-600);
             color: var(--white);
 
@@ -60,8 +60,8 @@ const setColors = ({ type, disabled }: PLink): string => {
                 background: var(--rose-700);
             }
         `;
-        default:
-            return `
+    default:
+      return `
             background: var(--white);
             color: var(--gray-600);
 
@@ -69,5 +69,5 @@ const setColors = ({ type, disabled }: PLink): string => {
                 background: var(--gray-200);
             }
         `;
-    }
+  }
 };

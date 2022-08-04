@@ -1,5 +1,5 @@
 export interface ISettings {
-    firstName: string;
-    darkMode: boolean;
-    updatedAt?: Date;
+  firstName: string;
+  darkMode: boolean;
+  updatedAt?: Date;
 }

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function NumberField() {
-    return (
-        <Wrapper>
-            <span>Number</span>
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <span>Number</span>
+    </Wrapper>
+  );
 }
 
 export default NumberField;

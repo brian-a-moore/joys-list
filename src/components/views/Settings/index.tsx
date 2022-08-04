@@ -1,89 +1,89 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import { getSettings, updateSettings } from '../../../api';
-import { InputValue } from '../../../interfaces/input';
-import { ISettings } from '../../../interfaces/settings';
-import { CheckBox, Input } from '../../form';
-import { Button } from '../../interactive';
+import { getSettings, updateSettings } from "../../../api";
+import { InputValue } from "../../../interfaces/input";
+import { ISettings } from "../../../interfaces/settings";
+import { CheckBox, Input } from "../../form";
+import { Button } from "../../interactive";
 
 function Settings() {
-    const navigate = useNavigate();
-    const [settings, setSettings] = useState<ISettings | null>(null);
+  const navigate = useNavigate();
+  const [settings, setSettings] = useState<ISettings | null>(null);
 
-    useEffect(() => {
-        setSettings(getSettings());
-    }, []);
+  useEffect(() => {
+    setSettings(getSettings());
+  }, []);
 
-    /**
-     * Navigates back to previous page
-     * @param e Event
-     */
-    const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        navigate(-1);
-    };
+  /**
+   * Navigates back to previous page
+   * @param e Event
+   */
+  const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    navigate(-1);
+  };
 
-    /**
-     * Input control onChange form events
-     * @param name Settings key name
-     * @param value Update value
-     */
-    const _onChange = (name: string, value: InputValue) => {
-        setSettings(prevState => {
-            if (prevState) {
-                return { ...prevState, [name]: value };
-            }
-            return null;
-        });
-    };
+  /**
+   * Input control onChange form events
+   * @param name Settings key name
+   * @param value Update value
+   */
+  const _onChange = (name: string, value: InputValue) => {
+    setSettings((prevState) => {
+      if (prevState) {
+        return { ...prevState, [name]: value };
+      }
+      return null;
+    });
+  };
 
-    const _onSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            updateSettings(settings as ISettings);
-            navigate(-1);
-        } catch (e: any | unknown) {
-            alert(e.message);
-        }
-    };
-
-    if (settings === null) {
-        return (
-            <Wrapper>
-                <h1>Settings</h1>
-                <p>Loading...</p>
-            </Wrapper>
-        );
+  const _onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      updateSettings(settings as ISettings);
+      navigate(-1);
+    } catch (e: any | unknown) {
+      alert(e.message);
     }
+  };
 
+  if (settings === null) {
     return (
-        <Wrapper>
-            <h1>Settings</h1>
-            <form onSubmit={_onSubmit}>
-                <div>
-                    <Input
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        onChange={_onChange}
-                        value={settings.firstName}
-                    />
-                    <CheckBox
-                        name="darkMode"
-                        label="Dark Mode"
-                        onChange={_onChange}
-                        value={settings.darkMode}
-                    />
-                </div>
-                <div>
-                    <Button onClick={_onCancel}>Cancel</Button>
-                    <Button>Save</Button>
-                </div>
-            </form>
-        </Wrapper>
+      <Wrapper>
+        <h1>Settings</h1>
+        <p>Loading...</p>
+      </Wrapper>
     );
+  }
+
+  return (
+    <Wrapper>
+      <h1>Settings</h1>
+      <form onSubmit={_onSubmit}>
+        <div>
+          <Input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            onChange={_onChange}
+            value={settings.firstName}
+          />
+          <CheckBox
+            name="darkMode"
+            label="Dark Mode"
+            onChange={_onChange}
+            value={settings.darkMode}
+          />
+        </div>
+        <div>
+          <Button onClick={_onCancel}>Cancel</Button>
+          <Button>Save</Button>
+        </div>
+      </form>
+    </Wrapper>
+  );
 }
 
 export default Settings;
