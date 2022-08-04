@@ -8,7 +8,7 @@ import { EInputType } from '../../../../interfaces/input';
 import {
     IField,
     IFieldConstant,
-    IDefaultFieldOption
+    IFieldOption
 } from '../../../../interfaces/field';
 import { EButtonType } from '../../../../interfaces/interactions';
 import { getFieldOptionConstants } from '../../../../helpers';
@@ -29,7 +29,7 @@ function Field({
         setShowOptions(prevState => !prevState);
     };
 
-    const _renderOptions = (key: string, opts: IDefaultFieldOption) => {
+    const _renderOptions = (key: string, opts: IFieldOption) => {
         const constants = getFieldOptionConstants(key);
 
         return constants.map((c: IFieldConstant) => {

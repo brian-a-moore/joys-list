@@ -9,7 +9,7 @@ export interface IField {
     id: string;
     fieldName: string;
     fieldType: EFieldType;
-    opts: IDefaultFieldOption;
+    opts: IFieldOption;
 }
 
 export interface IFieldConstant {
@@ -21,7 +21,7 @@ export interface IFieldConstant {
     value: any;
 }
 
-export interface IDefaultFieldOption {
+export interface IFieldOption {
     defaultValue: any;
     dateFormat?: string;
     allowPastDates?: boolean;
