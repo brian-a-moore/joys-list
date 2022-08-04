@@ -18,8 +18,9 @@ import { IField, IFieldOptions } from "../../../interfaces/field";
 import { InputValue } from "../../../interfaces/input";
 import { EButtonType } from "../../../interfaces/interactions";
 import { ITemplate } from "../../../interfaces/template";
+import { EmptyText } from "../../display";
 import { Input } from "../../form";
-import { Button, IconButton } from "../../interactive";
+import { Button } from "../../interactive";
 import Field from "./Field";
 
 function Template() {
@@ -28,6 +29,7 @@ function Template() {
   const isNewTemplate = id && id === "new";
 
   const [template, setTemplate] = useState<ITemplate>(DEFAULT_TEMPLATE);
+  const [openFieldId, setOpenFieldId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isNewTemplate) {
@@ -103,7 +105,7 @@ function Template() {
   const _onFieldChange = (
     id: string,
     name: keyof IField,
-    value: InputValue
+    value: InputValue,
   ) => {
     setTemplate((prevState) => {
       const fields = [...prevState.fields];
@@ -136,7 +138,7 @@ function Template() {
   const _onOptChange = (
     id: string,
     name: keyof IFieldOptions,
-    value: InputValue
+    value: InputValue,
   ) => {
     setTemplate((prevState) => {
       const fields = [...prevState.fields];
@@ -167,6 +169,14 @@ function Template() {
     }
   };
 
+  const _toggleOptions = (e: React.FormEvent<HTMLInputElement>, id: string) => {
+    e.preventDefault();
+    setOpenFieldId((prevState) => {
+      if (prevState === id) return null;
+      return id;
+    });
+  };
+
   if (template === null) {
     return <Wrapper> Loading... </Wrapper>;
   }
@@ -184,18 +194,13 @@ function Template() {
             placeholder="Template Title"
             value={template.title}
           />
-          {!isNewTemplate && (
-            <div className="delete-template">
-              <IconButton
-                type={EButtonType.DESTRUCTIVE}
-                path="delete"
-                onClick={_deleteTemplate}
-              />
-            </div>
-          )}
         </main>
-        <section>
-          <h4>Fields</h4>
+        <section className="fields">
+          <h4>Fields ({template.fields.length})</h4>
+          <div className="add-field">
+            <Button onClick={_addField}>Add Field</Button>
+          </div>
+          {!template.fields.length && <EmptyText>No Fields</EmptyText>}
           {template.fields.map((field) => (
             <Field
               key={field.id}
@@ -203,11 +208,19 @@ function Template() {
               onFieldChange={_onFieldChange}
               onOptChange={_onOptChange}
               deleteField={_deleteField}
+              toggleOptions={_toggleOptions}
+              openFieldId={openFieldId}
             />
           ))}
         </section>
-        <aside>
-          <Button onClick={_addField}>Add Field</Button>
+        {!isNewTemplate && (
+          <aside className="secondary-actions">
+            <Button type={EButtonType.DESTRUCTIVE} onClick={_deleteTemplate}>
+              Delete Template
+            </Button>
+          </aside>
+        )}
+        <aside className="primary-actions">
           <Button onClick={_onCancel}>Cancel</Button>
           <Button type={EButtonType.AFFIRMATIVE}>
             {isNewTemplate ? "Create " : "Update "} Template
@@ -230,5 +243,29 @@ const Wrapper = styled.section`
     float: left;
     width: 100%;
     margin: 0 0 1rem 0;
+  }
+
+  .fields {
+    position: relative;
+    float: left;
+    width: 100%;
+
+    .add-field {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .secondary-actions {
+    float: left;
+  }
+
+  .primary-actions {
+    float: right;
+
+    & button + button {
+      margin: 0 0 0 1rem;
+    }
   }
 `;

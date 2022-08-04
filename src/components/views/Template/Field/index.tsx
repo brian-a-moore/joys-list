@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 import { FIELD_OPTS } from "../../../../data/constants";
@@ -19,23 +18,16 @@ function Field({
   onFieldChange,
   onOptChange,
   deleteField,
+  toggleOptions,
+  openFieldId = null,
 }: {
   field: IField;
   onFieldChange: Function;
   onOptChange: Function;
   deleteField: Function;
+  toggleOptions: Function;
+  openFieldId: string | null;
 }) {
-  const [showOptions, setShowOptions] = useState(false);
-
-  /**
-   * Toggles whether the current field's options menu is visible
-   * @param e Event
-   */
-  const _toggleOptions = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setShowOptions((prevState) => !prevState);
-  };
-
   /**
    * Renders the options' inputs on screen
    * @param key Field type
@@ -49,67 +41,72 @@ function Field({
       switch (c.type) {
         case EInputType.CHECKBOX: {
           return (
-            <CheckBox
-              key={getId()}
-              name={c.name}
-              label={c.label}
-              onChange={(name, value) => onOptChange(field.id, name, value)}
-              // TODO: Fix - this isn't going to work for boolean values
-              value={opts[c.name] || c.value}
-            />
+            <div className="field-option" key={getId()}>
+              <CheckBox
+                name={c.name}
+                label={c.label}
+                onChange={(name, value) => onOptChange(field.id, name, value)}
+                // TODO: Fix - this isn't going to work for boolean values
+                value={opts[c.name] || c.value}
+              />
+            </div>
           );
         }
         case EInputType.DATE: {
           return (
-            <Input
-              key={getId()}
-              type={EInputType.DATE}
-              name={c.name}
-              label={c.label}
-              onChange={(name, value) => onOptChange(field.id, name, value)}
-              // TODO: This isn't going to work for falsy values
-              value={opts[c.name] || c.value}
-            />
+            <div className="field-option" key={getId()}>
+              <Input
+                type={EInputType.DATE}
+                name={c.name}
+                label={c.label}
+                onChange={(name, value) => onOptChange(field.id, name, value)}
+                // TODO: This isn't going to work for falsy values
+                value={opts[c.name] || c.value}
+              />
+            </div>
           );
         }
         case EInputType.NUMBER: {
           return (
-            <Input
-              key={getId()}
-              type={EInputType.NUMBER}
-              name={c.name}
-              label={c.label}
-              onChange={(name, value) => onOptChange(field.id, name, value)}
-              // TODO: This isn't going to work for falsy values
-              value={opts[c.name] || c.value}
-            />
+            <div className="field-option" key={getId()}>
+              <Input
+                type={EInputType.NUMBER}
+                name={c.name}
+                label={c.label}
+                onChange={(name, value) => onOptChange(field.id, name, value)}
+                // TODO: This isn't going to work for falsy values
+                value={opts[c.name] || c.value}
+              />
+            </div>
           );
         }
         case EInputType.SELECT: {
           return (
-            <Select
-              key={getId()}
-              type={EInputType.NUMBER}
-              name={c.name}
-              label={c.label}
-              onChange={(name, value) => onOptChange(field.id, name, value)}
-              options={c.options}
-              // TODO: This isn't going to work for falsy values
-              value={opts[c.name] || c.value}
-            />
+            <div className="field-option" key={getId()}>
+              <Select
+                type={EInputType.NUMBER}
+                name={c.name}
+                label={c.label}
+                onChange={(name, value) => onOptChange(field.id, name, value)}
+                options={c.options}
+                // TODO: This isn't going to work for falsy values
+                value={opts[c.name] || c.value}
+              />
+            </div>
           );
         }
         case EInputType.TEXT: {
           return (
-            <Input
-              key={getId()}
-              type={EInputType.TEXT}
-              name={c.name}
-              label={c.label}
-              onChange={(name, value) => onOptChange(field.id, name, value)}
-              // TODO: This isn't going to work for falsy values
-              value={opts[c.name] || c.value}
-            />
+            <div className="field-option" key={getId()}>
+              <Input
+                type={EInputType.TEXT}
+                name={c.name}
+                label={c.label}
+                onChange={(name, value) => onOptChange(field.id, name, value)}
+                // TODO: This isn't going to work for falsy values
+                value={opts[c.name] || c.value}
+              />
+            </div>
           );
         }
         default:
@@ -138,8 +135,8 @@ function Field({
         </div>
         <div className="actions">
           <IconButton
-            onClick={_toggleOptions}
-            path={showOptions ? "minimize" : "maximize"}
+            onClick={(e: Event) => toggleOptions(e, field.id)}
+            path={openFieldId === field.id ? "minimize" : "maximize"}
           />
           <IconButton
             type={EButtonType.DESTRUCTIVE}
@@ -148,7 +145,7 @@ function Field({
           />
         </div>
       </div>
-      {showOptions && (
+      {openFieldId === field.id && (
         <div className="field-options">
           <h6>Options:</h6>
           <>{_renderOptions(field.fieldType, field.opts)}</>
@@ -191,14 +188,16 @@ const Wrapper = styled.div`
   }
 
   .field-options {
-    background: var(--gray-200);
+    background: var(--gray-100);
     float: left;
     width: 100%;
     margin: 1rem 0 0 0;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
+    border: 1px solid var(--gray-200);
     border-radius: 4px;
 
-    .opts-row {
+    .field-option {
       float: left;
       width: 100%;
       margin: 0 0 1rem 0;

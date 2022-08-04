@@ -3,7 +3,7 @@
 * {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 html {
@@ -26,5 +26,15 @@ h6 {
   margin: 0 0 1rem 0;
   padding: 0;
   width: 100%;
+  color: var(--gray-600);
   font-weight: 600;
+}
+
+p,
+li,
+input,
+select,
+label,
+a {
+  color: var(--gray-600);
 }
