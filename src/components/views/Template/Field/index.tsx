@@ -7,11 +7,11 @@ import { EFieldType, FIELD_OPTS } from '../../../../data/constants';
 import { InputValue } from '../../../../interfaces/input';
 import {
     IField,
-    IFieldOption,
+    IFieldConstant,
     IDefaultFieldOption
 } from '../../../../interfaces/field';
 import { EButtonTypes } from '../../../../interfaces/interactions';
-import { getFieldOptions } from '../../../../helpers';
+import { getFieldOptionConstants } from '../../../../helpers';
 
 function Field({
     field,
@@ -30,9 +30,9 @@ function Field({
     };
 
     const _renderOptions = (key: string, opts: IDefaultFieldOption) => {
-        const fieldOptions = getFieldOptions(key);
+        const constants = getFieldOptionConstants(key);
 
-        return fieldOptions.map((opt: IFieldOption) => {
+        return constants.map((opt: IFieldConstant) => {
             switch (opt.type) {
                 case EFieldType.CHECKBOX: {
                     return opt.type;

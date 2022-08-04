@@ -13,10 +13,12 @@ export interface IField {
 }
 
 export interface IFieldConstant {
-    id: EFieldType;
-    value: EFieldType;
-    title: string;
-    opts: IFieldOption;
+    type: string;
+    name: string;
+    label?: string;
+    placeholder?: string;
+    options?: any[];
+    value: any;
 }
 
 export interface IDefaultFieldOption {
@@ -26,13 +28,4 @@ export interface IDefaultFieldOption {
     allowNegative?: boolean;
     isDollarFormatted?: boolean;
     showCents?: boolean;
-}
-
-export interface IFieldOption {
-    type: string;
-    name: string;
-    label?: string;
-    placeholder?: string;
-    options?: any[];
-    value: any;
 }
