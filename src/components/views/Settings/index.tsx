@@ -7,7 +7,7 @@ import { CheckBox, Input } from "../../form";
 import { Button } from "../../interactive";
 import { Wrapper } from "./style";
 
-function Settings() {
+const Settings = () => {
   const navigate = useNavigate();
   const [settings, setSettings] = useState<ISettings | null>(null);
 
@@ -69,6 +69,6 @@ function Settings() {
       )}
     </Wrapper>
   );
-}
+};
 
 export default Settings;

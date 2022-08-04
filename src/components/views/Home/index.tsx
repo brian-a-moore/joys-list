@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSettings } from "../../../api";
 import { Wrapper } from "./style";
 
-function Home() {
+const Home = () => {
   const [firstName, setFirstName] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,6 +21,6 @@ function Home() {
       )}
     </Wrapper>
   );
-}
+};
 
 export default Home;

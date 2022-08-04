@@ -7,7 +7,7 @@ import { Card, EmptyText } from "../../display";
 import { IconButton, Link } from "../../interactive";
 import { TemplateLink, Wrapper } from "./style";
 
-function Templates() {
+const Templates = () => {
   const [templates, setTemplates] = useState<ITemplate[] | null>(null);
 
   useEffect(() => {
@@ -56,6 +56,6 @@ function Templates() {
       </div>
     </Wrapper>
   );
-}
+};
 
 export default Templates;

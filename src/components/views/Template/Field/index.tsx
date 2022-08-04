@@ -12,7 +12,7 @@ import { CheckBox, Input, Select } from "../../../form";
 import { IconButton } from "../../../interactive";
 import { Wrapper } from "./style";
 
-function Field({
+const Field = ({
   field,
   onFieldChange,
   onOptChange,
@@ -26,7 +26,7 @@ function Field({
   deleteField: Function;
   toggleOptions: Function;
   openFieldId: string | null;
-}) {
+}) => {
   return (
     <Wrapper>
       <div className="field-header">
@@ -67,7 +67,7 @@ function Field({
       )}
     </Wrapper>
   );
-}
+};
 
 export default Field;
 

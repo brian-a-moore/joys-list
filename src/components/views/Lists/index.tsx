@@ -7,7 +7,7 @@ import { Card, EmptyText } from "../../display";
 import { IconButton, Link } from "../../interactive";
 import { ListLink, Wrapper } from "./style";
 
-function Lists() {
+const Lists = () => {
   const [lists, setLists] = useState<IList[] | null>(null);
 
   useEffect(() => {
@@ -56,6 +56,6 @@ function Lists() {
       </div>
     </Wrapper>
   );
-}
+};
 
 export default Lists;

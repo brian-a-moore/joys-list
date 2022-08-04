@@ -22,7 +22,7 @@ import { Button } from "../../interactive";
 import Field from "./Field";
 import { Wrapper } from "./style";
 
-function Template() {
+const Template = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isNewTemplate = id && id === "new";
@@ -203,6 +203,6 @@ function Template() {
       </form>
     </Wrapper>
   );
-}
+};
 
 export default Template;

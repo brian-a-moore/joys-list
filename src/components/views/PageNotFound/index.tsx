@@ -1,11 +1,11 @@
 import { Wrapper } from "./style";
 
-function PageNotFound() {
+const PageNotFound = () => {
   return (
     <Wrapper>
       <span>Page Not Found</span>
     </Wrapper>
   );
-}
+};
 
 export default PageNotFound;
