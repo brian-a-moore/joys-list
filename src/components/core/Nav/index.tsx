@@ -1,7 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
-import styled from "styled-components";
+import { Link, Wrapper } from "./style";
 
-function Nav() {
+const Nav = () => {
   return (
     <Wrapper>
       <Link to="/">Home</Link>
@@ -10,15 +9,6 @@ function Nav() {
       <Link to="/settings">Settings</Link>
     </Wrapper>
   );
-}
+};
 
 export default Nav;
-
-const Wrapper = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-`;
-
-const Link = styled(RouterLink)``;

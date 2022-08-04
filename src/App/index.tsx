@@ -1,5 +1,4 @@
-import { Routes, Route } from "react-router-dom";
-import styled from "styled-components";
+import { Route, Routes } from "react-router-dom";
 import { Nav } from "../components/core";
 import {
   Home,
@@ -10,6 +9,7 @@ import {
   Template,
   Templates,
 } from "../components/views";
+import { Container, Wrapper } from "./style";
 
 function App() {
   return (
@@ -31,20 +31,3 @@ function App() {
 }
 
 export default App;
-
-const Wrapper = styled.div`
-  background: var(--white);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  overflow-y: auto;
-`;
