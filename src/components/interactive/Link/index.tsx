@@ -3,9 +3,9 @@ import { Link as RouterLink } from "react-router-dom";
 
 import { EButtonType, PLink } from "../../../interfaces/interactions";
 
-function Link({ children, ...rest }: { children: string; [x: string]: any }) {
+const Link: React.FC<PLink> = ({ children, ...rest }) => {
   return <Wrapper {...rest}>{children}</Wrapper>;
-}
+};
 
 export default Link;
 

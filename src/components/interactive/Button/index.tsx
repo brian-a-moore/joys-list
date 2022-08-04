@@ -2,15 +2,9 @@ import styled from "styled-components";
 
 import { EButtonType, PButton } from "../../../interfaces/interactions";
 
-function Button({
-  children,
-  ...rest
-}: {
-  children: string | string[];
-  [x: string]: any;
-}) {
+const Button: React.FC<PButton> = ({ children, ...rest }) => {
   return <Wrapper {...rest}>{children}</Wrapper>;
-}
+};
 
 export default Button;
 

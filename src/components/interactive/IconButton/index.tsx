@@ -24,13 +24,13 @@ const getIcon = (path: string) => {
   }
 };
 
-function IconButton({ path, size, ...rest }: PIcon) {
+const IconButton: React.FC<PIcon> = ({ children, path, size, ...rest }) => {
   return (
     <Wrapper {...rest}>
       <Icon path={getIcon(path)} size={size || "1rem"} />
     </Wrapper>
   );
-}
+};
 
 export default IconButton;
 
