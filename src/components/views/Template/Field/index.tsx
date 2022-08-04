@@ -158,29 +158,21 @@ function Field({
 export default Field;
 
 const Wrapper = styled.div`
-  float: left;
-  width: 100%;
   margin: 0 0 1rem 0;
   padding: 1rem;
   border: 1px solid var(--gray-200);
   border-radius: 4px;
 
   .field-header {
-    float: left;
-    width: 100%;
     height: 2rem;
 
     .inputs {
-      float: left;
-
       & div + div {
         margin: 0 0 0 1rem;
       }
     }
 
     .actions {
-      float: right;
-
       & button + button {
         margin: 0 0 0 1rem;
       }
@@ -189,8 +181,6 @@ const Wrapper = styled.div`
 
   .field-options {
     background: var(--gray-100);
-    float: left;
-    width: 100%;
     margin: 1rem 0 0 0;
     padding: 1rem;
     padding-bottom: 0;
@@ -198,8 +188,6 @@ const Wrapper = styled.div`
     border-radius: 4px;
 
     .field-option {
-      float: left;
-      width: 100%;
       margin: 0 0 1rem 0;
     }
   }

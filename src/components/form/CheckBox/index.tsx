@@ -26,10 +26,7 @@ const CheckBox: React.FC<PInput> = ({ onChange, name, label, value }) => {
 export default CheckBox;
 
 const Wrapper = styled.div`
-  float: left;
-
   label {
-    float: left;
     margin: 0 0 0 1rem;
     height: 2rem;
     line-height: 2rem;
@@ -37,7 +34,6 @@ const Wrapper = styled.div`
   }
 
   .container {
-    float: left;
     width: 2rem;
     height: 2rem;
     display: flex;

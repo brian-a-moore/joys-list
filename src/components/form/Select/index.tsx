@@ -24,10 +24,7 @@ const SelectInput: React.FC<PInput> = ({ onChange, name, options, value }) => {
 export default SelectInput;
 
 const Wrapper = styled.div`
-  float: left;
-
   select {
-    float: left;
     height: 2rem;
     padding: 0 1rem;
     border: 1px solid var(--gray-300);

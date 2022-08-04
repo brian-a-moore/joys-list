@@ -12,10 +12,7 @@ export default Empty;
 
 const Wrapper = styled.div`
   background: var(--gray-100);
-  float: left;
-  width: 100%;
   text-align: center;
-  margin: 0 0 1rem 0;
   padding: 1rem;
   border-radius: 4px;
 

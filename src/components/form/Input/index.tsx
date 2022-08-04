@@ -25,10 +25,7 @@ const Input: React.FC<PInput> = ({
 export default Input;
 
 const Wrapper = styled.div`
-  float: left;
-
   input {
-    float: left;
     height: 2rem;
     padding: 0 1rem;
     border: 1px solid var(--gray-300);

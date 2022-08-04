@@ -36,7 +36,6 @@ export default IconButton;
 
 const Wrapper = styled.button`
   ${(props: PIcon) => setColors(props)};
-  float: left;
   width: 2rem;
   height: 2rem;
   margin: 0;

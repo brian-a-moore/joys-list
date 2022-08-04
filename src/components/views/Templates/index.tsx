@@ -82,14 +82,11 @@ export default Templates;
 
 const Wrapper = styled.section`
   .template-row {
-    float: left;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .delete-button {
-      float: left;
       width: 2rem;
       height: 100%;
       text-overflow: ellipsis;
@@ -100,7 +97,6 @@ const Wrapper = styled.section`
 `;
 
 const TemplateLink = styled(RouterLink)`
-  float: left;
   padding: 0.5rem 1rem;
   width: calc(100% - 2rem);
   color: var(--gray-600);
@@ -112,15 +108,12 @@ const TemplateLink = styled(RouterLink)`
   }
 
   .title {
-    float: left;
-    width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
 
   .updated-at {
-    width: 100%;
     font-size: 0.6rem;
 
     strong {

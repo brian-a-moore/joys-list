@@ -235,20 +235,15 @@ export default Template;
 
 const Wrapper = styled.section`
   .delete-template {
-    float: left;
     margin: 0 0 0 1rem;
   }
 
   main {
-    float: left;
-    width: 100%;
     margin: 0 0 1rem 0;
   }
 
   .fields {
     position: relative;
-    float: left;
-    width: 100%;
 
     .add-field {
       position: absolute;
@@ -258,12 +253,9 @@ const Wrapper = styled.section`
   }
 
   .secondary-actions {
-    float: left;
   }
 
   .primary-actions {
-    float: right;
-
     & button + button {
       margin: 0 0 0 1rem;
     }
