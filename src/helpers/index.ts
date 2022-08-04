@@ -47,7 +47,7 @@ export const getDefaultFieldOptions = (key: string): IFieldOptions => {
     }
 };
 
-export const getFieldOptionConstants = (key: string): IFieldConstant[] => {
+export const getFieldOptionConstants = (key: EFieldType): IFieldConstant[] => {
     switch (key) {
         case EFieldType.CHECKBOX:
             return [

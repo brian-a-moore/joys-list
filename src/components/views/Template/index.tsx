@@ -20,6 +20,7 @@ import { InputValue } from '../../../interfaces/input';
 import { EButtonType } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
 import Field from './Field';
+import { IField, IFieldOptions } from '../../../interfaces/field';
 
 function Template() {
     const { id } = useParams();
@@ -38,6 +39,10 @@ function Template() {
         }
     }, [isNewTemplate, id]);
 
+    /**
+     * Adds a new field row to the template and populates it with a default state
+     * @param e Event
+     */
     const _addField = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
 
@@ -47,6 +52,10 @@ function Template() {
         }));
     };
 
+    /**
+     * Deletes a field from the template
+     * @param id The ID of the field
+     */
     const _deleteField = (id: string) => {
         setTemplate(prevState => ({
             ...prevState,
@@ -54,17 +63,30 @@ function Template() {
         }));
     };
 
+    /**
+     * Deletes the current template and returns to the previous page
+     * @param e Event
+     */
     const _deleteTemplate = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         deleteTemplate(id || template.id);
         navigate(-1);
     };
 
+    /**
+     * Returns to the previous page
+     * @param e Event
+     */
     const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         navigate(-1);
     };
 
+    /**
+     *  Input control for top-level form fields
+     * @param name The name of the key being updated in the form
+     * @param value The update value
+     */
     const _onChange = (name: string, value: InputValue) => {
         setTemplate(prevState => ({
             ...prevState,
@@ -72,12 +94,20 @@ function Template() {
         }));
     };
 
-    const _onFieldChange = (id: string, name: string, value: InputValue) => {
+    /**
+     *  Input control for field changes
+     * @param id The ID for the specific field being updated
+     * @param name The name of the key being updated in the field
+     * @param value The update value
+     */
+    const _onFieldChange = (
+        id: string,
+        name: keyof IField,
+        value: InputValue
+    ) => {
         setTemplate(prevState => {
             const fields = [...prevState.fields];
             const index = fields.findIndex(f => f.id === id);
-
-            console.log(id, name, value);
 
             if (index > -1) {
                 // Update the field value
@@ -96,6 +126,33 @@ function Template() {
         });
     };
 
+    /**
+     * TODO: Fix - Input fields lose focus after each onChange event
+     * Input control for field options changes
+     * @param id The ID for the specific field being updated
+     * @param name The name of the key being updated in the field options
+     * @param value The update value
+     */
+    const _onOptChange = (
+        id: string,
+        name: keyof IFieldOptions,
+        value: InputValue
+    ) => {
+        setTemplate(prevState => {
+            const fields = [...prevState.fields];
+            const index = fields.findIndex(f => f.id === id);
+
+            if (index > -1) {
+                fields[index].opts[name] = value;
+            }
+
+            return { ...prevState, fields };
+        });
+    };
+
+    /**
+     * Submits the template to either a create or update function
+     */
     const _onSubmit = () => {
         try {
             if (isNewTemplate) {
@@ -144,6 +201,7 @@ function Template() {
                             key={field.id}
                             field={field}
                             onFieldChange={_onFieldChange}
+                            onOptChange={_onOptChange}
                             deleteField={_deleteField}
                         />
                     ))}

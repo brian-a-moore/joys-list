@@ -15,6 +15,10 @@ function Lists() {
         setLists(getLists());
     }, []);
 
+    /**
+     * Deletes a list
+     * @param id The ID of a list
+     */
     const _onDelete = (id: string) => {
         deleteList(id);
         setLists(getLists());

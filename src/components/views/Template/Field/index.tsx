@@ -6,30 +6,43 @@ import { IconButton } from '../../../interactive';
 import { FIELD_OPTS } from '../../../../data/constants';
 import { EInputType } from '../../../../interfaces/input';
 import {
+    EFieldType,
     IField,
     IFieldConstant,
     IFieldOptions
 } from '../../../../interfaces/field';
 import { EButtonType } from '../../../../interfaces/interactions';
-import { getFieldOptionConstants } from '../../../../helpers';
+import { getFieldOptionConstants, getId } from '../../../../helpers';
 
 function Field({
     field,
     onFieldChange,
+    onOptChange,
     deleteField
 }: {
     field: IField;
     onFieldChange: Function;
+    onOptChange: Function;
     deleteField: Function;
 }) {
     const [showOptions, setShowOptions] = useState(false);
 
+    /**
+     * Toggles whether the current field's options menu is visible
+     * @param e Event
+     */
     const _toggleOptions = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         setShowOptions(prevState => !prevState);
     };
 
-    const _renderOptions = (key: string, opts: IFieldOptions) => {
+    /**
+     * Renders the options' inputs on screen
+     * @param key Field type
+     * @param opts The selected options for the current field
+     * @returns A list of JSX elements
+     */
+    const _renderOptions = (key: EFieldType, opts: IFieldOptions) => {
         const constants = getFieldOptionConstants(key);
 
         return constants.map((c: IFieldConstant) => {
@@ -37,9 +50,12 @@ function Field({
                 case EInputType.CHECKBOX: {
                     return (
                         <CheckBox
+                            key={getId()}
                             name={c.name}
                             label={c.label}
-                            onChange={() => {}}
+                            onChange={(name, value) =>
+                                onOptChange(field.id, name, value)
+                            }
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -47,10 +63,13 @@ function Field({
                 case EInputType.DATE: {
                     return (
                         <Input
+                            key={getId()}
                             type={EInputType.DATE}
                             name={c.name}
                             label={c.label}
-                            onChange={() => {}}
+                            onChange={(name, value) =>
+                                onOptChange(field.id, name, value)
+                            }
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -58,10 +77,13 @@ function Field({
                 case EInputType.NUMBER: {
                     return (
                         <Input
+                            key={getId()}
                             type={EInputType.NUMBER}
                             name={c.name}
                             label={c.label}
-                            onChange={() => {}}
+                            onChange={(name, value) =>
+                                onOptChange(field.id, name, value)
+                            }
                             value={opts[c.name] || c.value}
                         />
                     );
@@ -69,10 +91,13 @@ function Field({
                 case EInputType.SELECT: {
                     return (
                         <Select
+                            key={getId()}
                             type={EInputType.NUMBER}
                             name={c.name}
                             label={c.label}
-                            onChange={() => {}}
+                            onChange={(name, value) =>
+                                onOptChange(field.id, name, value)
+                            }
                             options={c.options}
                             value={opts[c.name] || c.value}
                         />
@@ -81,11 +106,14 @@ function Field({
                 case EInputType.TEXT: {
                     return (
                         <Input
+                            key={getId()}
                             type={EInputType.TEXT}
                             name={c.name}
                             label={c.label}
-                            onChange={() => {}}
-                            value={c.value}
+                            onChange={(name, value) =>
+                                onOptChange(field.id, name, value)
+                            }
+                            value={opts[c.name] || c.value}
                         />
                     );
                 }

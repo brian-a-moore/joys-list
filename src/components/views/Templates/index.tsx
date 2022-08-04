@@ -15,6 +15,10 @@ function Templates() {
         setTemplates(getTemplates());
     }, []);
 
+    /**
+     * Deletes a template
+     * @param id The Id of a template
+     */
     const _onDelete = (id: string) => {
         deleteTemplate(id);
         setTemplates(getTemplates());

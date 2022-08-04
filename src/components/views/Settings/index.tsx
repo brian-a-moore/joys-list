@@ -15,11 +15,20 @@ function Settings() {
         setSettings(getSettings());
     }, []);
 
+    /**
+     * Navigates back to previous page
+     * @param e Event
+     */
     const _onCancel = (e: React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
         navigate(-1);
     };
 
+    /**
+     * Input control onChange form events
+     * @param name Settings key name
+     * @param value Update value
+     */
     const _onChange = (name: string, value: InputValue) => {
         setSettings(prevState => {
             if (prevState) {
