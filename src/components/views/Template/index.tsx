@@ -68,7 +68,21 @@ function Template() {
         }));
     };
 
-    const _onFieldChange = (id: string, name: string, value: InputValue) => {};
+    const _onFieldChange = (id: string, name: string, value: InputValue) => {
+        setTemplate(prevState => {
+            const fields = [...prevState.fields];
+            const index = fields.findIndex(f => f.id === id);
+
+            if (index > -1) {
+                fields[index] = {
+                    ...fields[index],
+                    [name]: value
+                };
+            }
+
+            return { ...prevState, fields };
+        });
+    };
 
     const _onSubmit = () => {
         try {
