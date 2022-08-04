@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
-function Input({
-    onChange,
-    name,
-    ...rest
-}: {
+type Props = {
     onChange: Function;
     name: string;
-    [x: string]: any;
-}) {
+};
+
+const Input: React.FC<Props> = ({ onChange, name, ...rest }) => {
     return (
         <Wrapper>
             <input
@@ -18,7 +15,7 @@ function Input({
             />
         </Wrapper>
     );
-}
+};
 
 export default Input;
 

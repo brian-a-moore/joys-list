@@ -1,12 +1,9 @@
 import { IField } from './field';
 
-export interface ITemplateBase {
+export interface ITemplate {
     id: string;
     title: string;
     fields: IField[];
-}
-
-export interface ITemplate extends ITemplateBase {
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

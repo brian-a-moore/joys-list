@@ -1,21 +1,18 @@
 import styled from 'styled-components';
 
+type Props = {
+    onChange: Function;
+    name: string;
+    options: Option[];
+};
+
 type Option = {
     id: string;
     value: string;
     title: string;
 };
 
-function SelectInput({
-    onChange,
-    name,
-    options,
-    ...rest
-}: {
-    onChange: Function;
-    name: string;
-    options: Option[];
-}) {
+const SelectInput: React.FC<Props> = ({ onChange, name, options, ...rest }) => {
     return (
         <Wrapper>
             <select
@@ -31,7 +28,7 @@ function SelectInput({
             </select>
         </Wrapper>
     );
-}
+};
 
 export default SelectInput;
 

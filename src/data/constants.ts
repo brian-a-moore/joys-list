@@ -39,11 +39,11 @@ export const DEFAULT_SETTINGS = {
     updatedAt: null
 };
 
-export const DEFAULT_TEMPLATE = (id: string): ITemplateBase => ({
+export const DEFAULT_TEMPLATE = {
     id: getId(),
     title: '',
-    fields: [DEFAULT_FIELD(id)]
-});
+    fields: []
+};
 
 export const DEFAULT_TEMPLATES = [];
 

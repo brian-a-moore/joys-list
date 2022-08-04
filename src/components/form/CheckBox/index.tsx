@@ -2,17 +2,14 @@ import styled from 'styled-components';
 import { mdiCheck } from '@mdi/js';
 import { Icon } from '@mdi/react';
 
-function CheckBox({
-    onChange,
-    name,
-    label,
-    value
-}: {
+type Props = {
     onChange: Function;
     name: string;
     label: string;
     value: boolean;
-}) {
+};
+
+const CheckBox: React.FC<Props> = ({ onChange, name, label, value }) => {
     return (
         <Wrapper>
             <div className="container">
@@ -29,7 +26,7 @@ function CheckBox({
             <label>{label}</label>
         </Wrapper>
     );
-}
+};
 
 export default CheckBox;
 
