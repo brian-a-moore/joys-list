@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 import { Input, Select } from '../../../form';
 import { IconButton } from '../../../interactive';
-import { FIELD_OPTS } from '../../../../data/constants';
+import { EFieldType, FIELD_OPTS } from '../../../../data/constants';
 import { InputValue } from '../../../../interfaces/input';
-import { IField, IFieldOpts } from '../../../../interfaces/field';
+import {
+    IField,
+    IFieldOption,
+    IDefaultFieldOption
+} from '../../../../interfaces/field';
 import { EButtonTypes } from '../../../../interfaces/interactions';
-// import { getDefaultOptions } from '../../../../helpers';
+import { getFieldOptions } from '../../../../helpers';
 
 function Field({
     field,
@@ -25,8 +29,27 @@ function Field({
         setShowOptions(prevState => !prevState);
     };
 
-    const _renderOptions = (key: string, opts: IFieldOpts) => {
-        // const defaultOpts = getDefaultOptions(key);
+    const _renderOptions = (key: string, opts: IDefaultFieldOption) => {
+        const fieldOptions = getFieldOptions(key);
+
+        return fieldOptions.map((opt: IFieldOption) => {
+            switch (opt.type) {
+                case EFieldType.CHECKBOX: {
+                    return opt.type;
+                }
+                case EFieldType.DATE: {
+                    return opt.type;
+                }
+                case EFieldType.NUMBER: {
+                    return opt.type;
+                }
+                case EFieldType.TEXT: {
+                    return opt.type;
+                }
+                default:
+                    throw new Error('Unknown field type');
+            }
+        });
     };
 
     return (

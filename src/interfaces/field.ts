@@ -1,27 +1,25 @@
-export interface IFieldConstant {
-    id: EFieldType;
-    value: EFieldType;
-    title: string;
-    opts: IFieldConstantOpts;
-}
-
-export interface IFieldConstantOpts {
-    type: string;
-    name: string;
-    label?: string;
-    placeholder?: string;
-    options?: any[];
-    value: any;
+export enum EFieldType {
+    CHECKBOX = 'checkbox',
+    DATE = 'date',
+    NUMBER = 'number',
+    TEXT = 'text'
 }
 
 export interface IField {
     id: string;
     fieldName: string;
     fieldType: EFieldType;
-    opts: IFieldOpts;
+    opts: IDefaultFieldOption;
 }
 
-export interface IFieldOpts {
+export interface IFieldConstant {
+    id: EFieldType;
+    value: EFieldType;
+    title: string;
+    opts: IFieldOption;
+}
+
+export interface IDefaultFieldOption {
     defaultValue: any;
     dateFormat?: string;
     allowPastDates?: boolean;
@@ -30,9 +28,11 @@ export interface IFieldOpts {
     showCents?: boolean;
 }
 
-export enum EFieldType {
-    checkbox = 'checkbox',
-    date = 'date',
-    number = 'number',
-    text = 'text'
+export interface IFieldOption {
+    type: string;
+    name: string;
+    label?: string;
+    placeholder?: string;
+    options?: any[];
+    value: any;
 }

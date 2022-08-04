@@ -1,4 +1,9 @@
-import { EFieldType, IField, IFieldOpts } from '../interfaces/field';
+import {
+    EFieldType,
+    IField,
+    IFieldOption,
+    IDefaultFieldOption
+} from '../interfaces/field';
 
 export const getId = (): string => {
     return Math.random().toString();
@@ -7,32 +12,32 @@ export const getId = (): string => {
 export const getDefaultField = (id: string): IField => ({
     id,
     fieldName: '',
-    fieldType: EFieldType.text,
+    fieldType: EFieldType.TEXT,
     opts: {
         defaultValue: ''
     }
 });
 
-export const getDefaultOptions = (key: string): IFieldOpts => {
+export const getDefaultFieldOptions = (key: string): IDefaultFieldOption => {
     switch (key) {
-        case 'checkbox':
+        case EFieldType.CHECKBOX:
             return {
                 defaultValue: false
             };
-        case 'date':
+        case EFieldType.DATE:
             return {
                 defaultValue: undefined,
                 dateFormat: 'MM/DD/YYYY',
                 allowPastDates: true
             };
-        case 'number':
+        case EFieldType.NUMBER:
             return {
                 defaultValue: undefined,
                 allowNegative: true,
                 isDollarFormatted: false,
                 showCents: true
             };
-        case 'text':
+        case EFieldType.TEXT:
             return {
                 defaultValue: ''
             };
@@ -41,21 +46,21 @@ export const getDefaultOptions = (key: string): IFieldOpts => {
     }
 };
 
-export const getFieldOpts = (key: string): Object => {
+export const getFieldOptions = (key: string): IFieldOption[] => {
     switch (key) {
-        case 'checkbox':
+        case EFieldType.CHECKBOX:
             return [
                 {
-                    type: 'checkbox',
+                    type: EFieldType.CHECKBOX,
                     name: 'defaultValue',
                     label: 'Default Value',
                     value: false
                 }
             ];
-        case 'date':
+        case EFieldType.DATE:
             return [
                 {
-                    type: 'number',
+                    type: EFieldType.NUMBER,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: undefined
@@ -79,43 +84,43 @@ export const getFieldOpts = (key: string): Object => {
                     value: 'MM/DD/YYYY'
                 },
                 {
-                    type: 'checkbox',
+                    type: EFieldType.CHECKBOX,
                     name: 'allowPastDates',
                     label: 'Allow Dates in Past',
                     value: true
                 }
             ];
-        case 'number':
+        case EFieldType.NUMBER:
             return [
                 {
-                    type: 'number',
+                    type: EFieldType.NUMBER,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: undefined
                 },
                 {
-                    type: 'checkbox',
+                    type: EFieldType.CHECKBOX,
                     name: 'allowNegative',
                     label: 'Allow Negative',
                     value: true
                 },
                 {
-                    type: 'checkbox',
+                    type: EFieldType.CHECKBOX,
                     name: 'isDollarFormatted',
                     label: 'Dollar Format',
                     value: true
                 },
                 {
-                    type: 'checkbox',
+                    type: EFieldType.CHECKBOX,
                     name: 'showCents',
                     label: 'Show Cents',
                     value: true
                 }
             ];
-        case 'text':
+        case EFieldType.TEXT:
             return [
                 {
-                    type: 'text',
+                    type: EFieldType.TEXT,
                     name: 'defaultValue',
                     placeholder: 'Default Value',
                     value: ''

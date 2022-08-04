@@ -16,25 +16,32 @@ export const DEFAULT_TEMPLATE = {
 
 export const DEFAULT_TEMPLATES = [];
 
+export enum EFieldType {
+    CHECKBOX = 'checkbox',
+    DATE = 'date',
+    NUMBER = 'number',
+    TEXT = 'text'
+}
+
 export const FIELD_OPTS = [
     {
-        id: 'checkbox',
-        value: 'checkbox',
+        id: EFieldType.CHECKBOX,
+        value: EFieldType.CHECKBOX,
         title: 'Check Box'
     },
     {
-        id: 'date',
-        value: 'date',
+        id: EFieldType.DATE,
+        value: EFieldType.DATE,
         title: 'Date'
     },
     {
-        id: 'number',
-        value: 'number',
+        id: EFieldType.NUMBER,
+        value: EFieldType.NUMBER,
         title: 'Number'
     },
     {
-        id: 'text',
-        value: 'text',
+        id: EFieldType.TEXT,
+        value: EFieldType.TEXT,
         title: 'Text'
     }
 ];

@@ -11,7 +11,11 @@ import {
 import { Input } from '../../form';
 import { Button, IconButton } from '../../interactive';
 import { DEFAULT_TEMPLATE } from '../../../data/constants';
-import { getDefaultField, getDefaultOptions, getId } from '../../../helpers';
+import {
+    getDefaultField,
+    getDefaultFieldOptions,
+    getId
+} from '../../../helpers';
 import { InputValue } from '../../../interfaces/input';
 import { EButtonTypes } from '../../../interfaces/interactions';
 import { ITemplate } from '../../../interfaces/template';
@@ -82,7 +86,7 @@ function Template() {
 
                 // Set default field options if the value changed was the field type
                 if (name === 'fieldType') {
-                    fields[index].opts = getDefaultOptions(value);
+                    fields[index].opts = getDefaultFieldOptions(value);
                 }
             }
 
