@@ -2,7 +2,7 @@ import {
     EFieldType,
     IField,
     IFieldConstant,
-    IFieldOption
+    IFieldOptions
 } from '../interfaces/field';
 import { EInputType } from '../interfaces/input';
 
@@ -19,7 +19,7 @@ export const getDefaultField = (id: string): IField => ({
     }
 });
 
-export const getDefaultFieldOptions = (key: string): IFieldOption => {
+export const getDefaultFieldOptions = (key: string): IFieldOptions => {
     switch (key) {
         case EFieldType.CHECKBOX:
             return {

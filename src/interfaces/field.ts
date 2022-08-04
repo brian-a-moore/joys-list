@@ -1,3 +1,5 @@
+import { InputValue } from './input';
+
 export enum EFieldType {
     CHECKBOX = 'checkbox',
     DATE = 'date',
@@ -9,7 +11,7 @@ export interface IField {
     id: string;
     fieldName: string;
     fieldType: EFieldType;
-    opts: IFieldOption;
+    opts: IFieldOptions;
 }
 
 export interface IFieldConstant {
@@ -17,12 +19,12 @@ export interface IFieldConstant {
     name: string;
     label?: string;
     placeholder?: string;
-    options?: any[];
-    value: any;
+    options?: InputValue[];
+    value: InputValue;
 }
 
-export interface IFieldOption {
-    defaultValue: any;
+export interface IFieldOptions {
+    defaultValue: InputValue;
     dateFormat?: string;
     allowPastDates?: boolean;
     allowNegative?: boolean;

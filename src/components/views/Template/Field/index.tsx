@@ -8,7 +8,7 @@ import { EInputType } from '../../../../interfaces/input';
 import {
     IField,
     IFieldConstant,
-    IFieldOption
+    IFieldOptions
 } from '../../../../interfaces/field';
 import { EButtonType } from '../../../../interfaces/interactions';
 import { getFieldOptionConstants } from '../../../../helpers';
@@ -29,7 +29,7 @@ function Field({
         setShowOptions(prevState => !prevState);
     };
 
-    const _renderOptions = (key: string, opts: IFieldOption) => {
+    const _renderOptions = (key: string, opts: IFieldOptions) => {
         const constants = getFieldOptionConstants(key);
 
         return constants.map((c: IFieldConstant) => {
@@ -40,6 +40,7 @@ function Field({
                             name={c.name}
                             label={c.label}
                             onChange={() => {}}
+                            // TODO: fix
                             value={c.value}
                         />
                     );
