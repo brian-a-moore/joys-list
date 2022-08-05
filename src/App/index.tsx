@@ -1,33 +1,25 @@
 import { Route, Routes } from "react-router-dom";
 import { Nav } from "../components/core";
-import {
-  Home,
-  List,
-  Lists,
-  PageNotFound,
-  Settings,
-  Template,
-  Templates,
-} from "../components/views";
+import Views from "../components/views";
 import { Container, Wrapper } from "./style";
 
-function App() {
+const App = () => {
   return (
     <Wrapper>
       <Nav />
       <Container>
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="/list/:id" element={<List />} />
-          <Route path="/lists" element={<Lists />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/template/:id" element={<Template />} />
-          <Route path="/templates" element={<Templates />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route index element={<Views.Home />} />
+          <Route path="/list/:id" element={<Views.List />} />
+          <Route path="/lists" element={<Views.Lists />} />
+          <Route path="/settings" element={<Views.Settings />} />
+          <Route path="/template/:id" element={<Views.Template />} />
+          <Route path="/templates" element={<Views.Templates />} />
+          <Route path="*" element={<Views.PageNotFound />} />
         </Routes>
       </Container>
     </Wrapper>
   );
-}
+};
 
 export default App;
