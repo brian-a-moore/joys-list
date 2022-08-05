@@ -7,11 +7,7 @@ import {
   updateTemplate,
 } from "../../../api";
 import { DEFAULT_TEMPLATE } from "../../../data/constants";
-import {
-  getDefaultField,
-  getDefaultFieldOptions,
-  getId,
-} from "../../../helpers";
+import { getId } from "../../../helpers";
 import { IField, IFieldOptions } from "../../../interfaces/field";
 import { InputValue } from "../../../interfaces/input";
 import { EButtonType } from "../../../interfaces/interactions";
@@ -20,6 +16,7 @@ import { EmptyText } from "../../display";
 import { Input } from "../../form";
 import { Button } from "../../interactive";
 import Field from "./Field";
+import { getDefaultField, getDefaultFieldOptions } from "./helpers";
 import { Wrapper } from "./style";
 
 const Template = () => {

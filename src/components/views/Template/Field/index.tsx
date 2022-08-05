@@ -1,5 +1,5 @@
 import { FIELD_OPTS } from "../../../../data/constants";
-import { getFieldOptionConstants, getId } from "../../../../helpers";
+import { getId } from "../../../../helpers";
 import {
   EFieldType,
   IField,
@@ -10,6 +10,7 @@ import { EInputType } from "../../../../interfaces/input";
 import { EButtonType } from "../../../../interfaces/interactions";
 import { CheckBox, Input, Select } from "../../../form";
 import { IconButton } from "../../../interactive";
+import { getFieldOptionConstants } from "./helpers";
 import { Wrapper } from "./style";
 
 const Field = ({
